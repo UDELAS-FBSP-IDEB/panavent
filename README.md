@@ -1,8 +1,8 @@
 # Panavent Project - An Open-Source Mechanical Ventilator.
 
-This repository contains all the essential components for designing and implementing a mechanical ventilator. The core element is a gas mixer for mechanical ventilators, utilizing a multiloop and parallel PID controller system. The project offers a complete solution, including hardware designs, control algorithms, 3D models, and full source code for easy replication and further development.
+This repository contains all the essential components for designing and implementing a mechanical ventilator. The central component is a gas mixer for mechanical ventilators, utilizing a multiloop and parallel PID controller system. The design and control system for the expiratory valve are also included, along with a C# application to manage the device's behavior, define various respiratory parameters, and display flow, volume, and pressure graphs.
 
-Ademas del mixer
+The project provides a comprehensive solution, including hardware designs, control algorithms, 3D models, and complete source code for easy replication and further development.
 
 ## Objective
 
