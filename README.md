@@ -27,3 +27,9 @@ The repository is structured as follows:
 - Visual Studio 2017 or later for compiling and running the PC software.
 - 3D printer for generating the physical components.
 - Basic knowledge of PID control systems and electronics.
+  
+## License
+This project is licensed under the MIT License, allowing for open-source distribution and adaptation. Please credit the original authors when using or adapting this work.
+
+## Contact
+For any questions or further information, feel free to reach out at luys.santana.0@udelas.ac.pa
