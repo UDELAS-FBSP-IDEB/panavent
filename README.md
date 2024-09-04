@@ -4,9 +4,6 @@ This repository contains all the essential components for designing and implemen
 
 The project provides a comprehensive solution, including hardware designs, control algorithms, 3D models, and complete source code for easy replication and further development.
 
-## Objective
-
-The objective of this project is to design and implement a gas mixer capable of precisely controlling the mixture of gases in mechanical ventilators, critical for patient care in medical settings. The system integrates PID controllers to ensure accurate gas delivery according to set parameters.
 
 ## Project Structure
 
