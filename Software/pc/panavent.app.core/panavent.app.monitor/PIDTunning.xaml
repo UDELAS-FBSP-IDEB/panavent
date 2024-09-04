@@ -1,0 +1,42 @@
+﻿<ContentDialog
+    x:Class="panavent.app.monitor.PIDTunning"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:panavent.app.monitor"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    CloseButtonText="Cancel">
+    <ContentDialog.TitleTemplate>
+        <DataTemplate>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Servicio  - PID tunning"/>
+            </StackPanel>
+        </DataTemplate>
+    </ContentDialog.TitleTemplate>
+    <StackPanel Width="500">
+        <TextBlock Text="Parametro:" />
+        <ComboBox x:Name="lbParams" HorizontalAlignment="Stretch" SelectedIndex="0" VerticalAlignment="Stretch" SelectionChanged="lbParams_SelectionChanged" />
+        <TextBlock Text="KP:" />
+        <TextBox x:Name="txKp"   Text="0" />
+        <TextBlock Text="KI:" />
+        <TextBox x:Name="txKi"   Text="0" />
+        <TextBlock Text="KD:" />
+        <TextBox x:Name="txKd"   Text="0" />
+        <TextBlock Text="Mínimo:" />
+        <TextBox x:Name="txMin"   Text="0" />
+        <TextBlock Text="Máximo:" />
+        <TextBox x:Name="txMax" Text="0" />
+        <TextBlock Text="Ema-Alpha:" />
+        <TextBox x:Name="txEmaAlpha" Text="1" />
+        <TextBlock Text="Test value:" />
+        <TextBox x:Name="txTestValue" Text="1" />
+        <Button HorizontalAlignment="Center" Margin="0,25,0,0" Click="Button_Click">
+            <StackPanel>
+                <SymbolIcon Symbol="Accept" />
+                <TextBlock>Aplicar PID</TextBlock>
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</ContentDialog>

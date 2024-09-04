@@ -6,3 +6,16 @@ software/app/RealTimeGraphX/
 /Software/dsPIC33CK/panavent.gases.pic.X/build
 /Software/pc/panavent.app.core/installer
 /Software/pc/panavent.app.core/panavent.app.monitor/bin
+/Software/dsPIC33CK/panavent.gases.pic.X/.generated_files
+/Software/dsPIC33CK/panavent.hardware.drivers.X/.generated_files
+/Software/dsPIC33CK/panavent.mezclador.X/.generated_files
+/Software/dsPIC33CK/panavent.utilities.X/.generated_files
+/Software/dsPIC33CK/panavent.valexp.X/.generated_files
+*.v2
+/Software/pc/panavent.app.core/.vs
+/Software/pc/panavent.app.core/panavent.app.console/bin
+/Software/pc/panavent.app.core/panavent.app.console/obj
+/Software/pc/panavent.app.core/panavent.app.core/bin
+/Software/pc/panavent.app.core/panavent.app.core/obj
+/Software/pc/panavent.app.core/panavent.app.monitor/AppPackages
+/Software/pc/panavent.app.core/panavent.app.monitor/obj

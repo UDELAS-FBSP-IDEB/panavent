@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "\\.generated_files",
+    "\\build",
+    "\\dist",
+    "\\mcc_generated_files",
+    "\\sensirion"
+  ],
+  "PreviewInSolutionExplorer": false
+}

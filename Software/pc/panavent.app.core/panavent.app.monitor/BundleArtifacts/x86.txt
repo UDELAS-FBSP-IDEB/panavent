@@ -1,0 +1,2 @@
+MainPackage=C:\Users\manue\Contain\Documentos\Panavent\src\software\app\panavent.app.core\panavent.app.monitor\bin\x86\Debug\panavent.app.monitor_1.0.13.0_x86_Debug.msix
+SymbolPackage=C:\Users\manue\Contain\Documentos\Panavent\src\software\app\panavent.app.core\panavent.app.monitor\obj\x86\Debug\Symbols\panavent.app.monitor_1.0.13.0_x86_Debug.appxsym

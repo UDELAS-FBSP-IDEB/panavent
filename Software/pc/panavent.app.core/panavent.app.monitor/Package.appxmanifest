@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+     xmlns:uap7="http://schemas.microsoft.com/appx/manifest/uap/windows10/7"
+         xmlns:uap8="http://schemas.microsoft.com/appx/manifest/uap/windows10/8"
+  IgnorableNamespaces="uap mp uap7 uap8">
+
+  <Identity
+    Name="7e91eea7-c19c-4b2d-8bd5-d487003344a9"
+    Publisher="CN=panavent"
+    Version="1.0.13.0" />
+
+  <mp:PhoneIdentity PhoneProductId="7e91eea7-c19c-4b2d-8bd5-d487003344a9" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>panavent.app.monitor</DisplayName>
+    <PublisherDisplayName>luys</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="panavent.app.monitor.App">
+      <uap:VisualElements
+        DisplayName="panavent.app.monitor"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png"
+        Description="panavent.app.monitor"
+        BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
+        <uap:SplashScreen Image="Assets\SplashScreen.png"  BackgroundColor="white"/>
+      </uap:VisualElements>
+		<uap7:Properties>
+			<uap8:ActiveCodePage>UTF-8</uap8:ActiveCodePage>
+		</uap7:Properties>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+	  <DeviceCapability Name="serialcommunication"/>
+
+  </Capabilities>
+</Package>

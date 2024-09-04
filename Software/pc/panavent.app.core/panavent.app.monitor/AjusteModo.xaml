@@ -1,0 +1,159 @@
+<ContentDialog
+    x:Class="panavent.app.monitor.AjusteModo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:panavent.app.monitor"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" PrimaryButtonText ="Aplicar" CloseButtonText ="Cancelar" PrimaryButtonClick="ContentDialog_PrimaryButtonClick" >
+
+
+    <ContentDialog.Resources>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="13.6"/>
+            <Setter Property="Width" Value="Auto"/>
+        </Style>
+    </ContentDialog.Resources>
+ 
+
+    <StackPanel Width="500" Padding="0">
+        <TextBlock Text="Parametros" HorizontalAlignment="Center" Margin="0,10,0,8" FontSize="22" FontWeight="Bold" />
+        <TextBlock Text="Modo ventilatorio:" />
+        <ComboBox x:Name="cmModos" HorizontalAlignment="Stretch" SelectionChanged="cmModos_SelectionChanged"></ComboBox>
+        <TextBlock x:Name="tblbVT"  Text="Volumen tidal:" />
+        <Grid x:Name="gVT"  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            
+            <Slider x:Name="sdVt" Grid.Column="0"  
+                Maximum="{Binding VolumenTidal.Maximo}"
+                StepFrequency ="{Binding VolumenTidal.Step}"
+                TickFrequency ="{Binding VolumenTidal.Tick}" 
+                TickPlacement="BottomRight" 
+                Value="{Binding   VolumenTidal.Valor, Mode=TwoWay}" ValueChanged="sdVt_ValueChanged"   />
+            
+            <TextBlock x:Name="txVT" Grid.Column="1"   
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" />
+        </Grid>
+        <TextBlock x:Name="tblbPresion"  Text="Presion:" />
+        <Grid x:Name="gPresion"  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <Slider x:Name="sdPresion" Grid.Column="0"  
+                Maximum="{Binding Presion.Maximo}"
+                StepFrequency ="{Binding Presion.Step}"
+                TickFrequency ="{Binding Presion.Tick}" 
+                TickPlacement="BottomRight" 
+                Value="{Binding   Presion.Valor, Mode=TwoWay}" ValueChanged="sdPresion_ValueChanged"   />
+
+            <TextBlock x:Name="txPresion" Grid.Column="1"   
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" />
+        </Grid>
+        <TextBlock Text="Frecuencia respiratoria:" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <Slider x:Name="sdFr" Grid.Column="0"  
+                Maximum="{Binding FrecuenciaRespiratoria.Maximo}"
+                StepFrequency ="{Binding FrecuenciaRespiratoria.Step}"
+                TickFrequency ="{Binding FrecuenciaRespiratoria.Tick}" 
+                TickPlacement="BottomRight" Value="{Binding FrecuenciaRespiratoria.Valor, Mode=TwoWay}" ValueChanged="sdFr_ValueChanged"  />
+
+            <TextBlock x:Name="txFr" Grid.Column="1"   
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" />
+        </Grid>
+        <TextBlock Text="Concenctracion O2:" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Slider x:Name="sdFio" Grid.Column="0"  
+                    Maximum="{Binding Concentracion.Maximo}"
+                StepFrequency ="{Binding Concentracion.Step}"
+                TickFrequency ="{Binding Concentracion.Tick}" 
+                TickPlacement="BottomRight" Value="{ Binding Concentracion.Valor, Mode=TwoWay}" ValueChanged="sdFio_ValueChanged"  />
+            <TextBlock x:Name="txFio" Grid.Column="1"  
+                     
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" />
+        </Grid>
+        <TextBlock Text="PEEP:" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Slider x:Name="sdPeep" Grid.Column="0"  
+                 Maximum="{Binding Peep.Maximo}"
+                StepFrequency ="{Binding Peep.Step}"
+                TickFrequency ="{Binding Peep.Tick}" 
+                TickPlacement="BottomRight" Value="{Binding Peep.Valor, Mode=TwoWay}" ValueChanged="sdPeep_ValueChanged" />
+            <TextBlock x:Name="txPeep" Grid.Column="1"  
+                       
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" />
+        </Grid>
+        <TextBlock Text="IE:" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Slider x:Name="sdIE" Grid.Column="0"  
+                         Maximum="{Binding Ie.Maximo}"
+                StepFrequency ="{Binding Ie.Step}"
+                TickFrequency ="{Binding Ie.Tick}" 
+                TickPlacement="BottomRight" Value="{Binding Ie.Valor, Mode=TwoWay}" ValueChanged="sdIE_ValueChanged"  />
+            <TextBlock x:Name="txIE" Grid.Column="1"  
+                        
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" />
+        </Grid>
+        <TextBlock Text="Pausa:" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Slider x:Name="sdPausa" Grid.Column="0"   
+                Maximum="{Binding Pausa.Maximo}"
+                StepFrequency ="{Binding Pausa.Step}"
+                TickFrequency ="{Binding Pausa.Tick}" 
+                TickPlacement="BottomRight" Value="{Binding Pausa.Valor, Mode=TwoWay}" ValueChanged="sdPausa_ValueChanged"  />
+            <TextBlock x:Name="txPausa" Grid.Column="1" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" />
+        </Grid>
+        <TextBlock Text="Onda:" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Slider x:Name="sdOnda" Grid.Column="0"  
+                 Maximum="{Binding Onda.Maximo}"
+                StepFrequency ="{Binding Onda.Step}"
+                TickFrequency ="{Binding Onda.Tick}"
+                TickPlacement="BottomRight" Value="{Binding Onda.Valor, Mode=TwoWay}" ValueChanged="sdOnda_ValueChanged"  />
+            <Image x:Name="imgOnda" Height="48" Width="48" Grid.Column="1"   
+                      HorizontalAlignment="Center" 
+                      VerticalAlignment="Center" 
+                         />
+        </Grid>
+
+    </StackPanel>
+
+</ContentDialog>
