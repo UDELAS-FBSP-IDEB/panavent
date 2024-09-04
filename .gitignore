@@ -3,3 +3,6 @@ software/app/panavent.app.core/RealTimeGraphX/
 software/app/RealTimeGraphX/
 *.d
 *.a
+/Software/dsPIC33CK/panavent.gases.pic.X/build
+/Software/pc/panavent.app.core/installer
+/Software/pc/panavent.app.core/panavent.app.monitor/bin
