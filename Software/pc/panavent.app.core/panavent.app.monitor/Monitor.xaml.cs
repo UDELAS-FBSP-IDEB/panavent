@@ -312,6 +312,27 @@ namespace panavent.app.monitor
             var D = new PIDTunning();
             await D.ShowAsync();
         }
- 
+
+      
+
+        private void btnPWMOxigeno_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnPWMAire_Click(object sender, RoutedEventArgs e)
+        {
+            var bridge = Bridge.GetSerialInterface();
+            run = false;
+            Thread.Sleep(10);
+            Instruccion instruccion = new Instruccion(0x05);
+            bridge.EnqueuePacket(instruccion);
+            Thread.Sleep(10);
+
+            Single pwm = float.Parse(txPWM.Text)/100; 
+            SetPWM setPWM = new SetPWM(0, pwm);
+            bridge.EnqueuePacket(setPWM);
+             
+        }
     }
 }

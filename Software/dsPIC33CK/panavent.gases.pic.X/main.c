@@ -18,151 +18,249 @@
 
 float t1 = 0;
 float t2 = 0;
-float cnt_mcp = 0;
-float cnt_ventilacion = 0;
-float cnt_mezclar = 0;
-float cnt_ventilacion_data = 0;
-float cnt_ventilacion_params = 0;
 
+#define TICKS_SEND_DATA     20      // 20 ms
+#define TICKS_GET_COMMAND   1000    // 1 s 
+#define TICKS_MCP           250     // 250 ms
+ 
+volatile uint16_t  cnt_timing_mcp = 0;
+volatile uint16_t  cnt_timing_ventilacion = 0; 
+volatile uint16_t  cnt_timing_send_data = 0;
+volatile uint16_t  cnt_timing_get_command = 0;
+
+static uint8_t pidTuningIndex = 0xFF;
 uint8_t mcp2ch = 1;
 PIDrequest presionPIDreq;
 float presionInspM = 1;
 float presionInspB = 0;
 float presionExpM = 1;
 float presionExpB = 0;
-uint8_t FLAG = 0x00;
-#define MEZCLAR                     CHECKBIT(FLAG,0)
-#define CLEAR_MEZCLAR               CLEARBIT(FLAG,0)
-#define SET_MEZCLAR                 SETBIT(FLAG,0)
-#define READ_MCP_FLAG               CHECKBIT(FLAG,2)
-#define CLEAR_READ_MCP_FLAG         CLEARBIT(FLAG,2)
-#define SET_MCP                     SETBIT(FLAG,2)  
-#define FLAG_TAKE_VTI               CHECKBIT(FLAG,4)
-#define CLEAR_FLAG_TAKE_VTI         CLEARBIT(FLAG,4)
-#define SET_FLAG_TAKE_VTI           SETBIT(FLAG,4)
-#define GET_VENT_PARAMS_FLAG          CHECKBIT(FLAG,5)
-#define CLEAR_VENT_DATA_PARAMS_FLAG    CLEARBIT(FLAG,5)
-#define SET_VENTILACION_PARAMS      SETBIT(FLAG,5) 
-#define SEND_VENT_DATA_FLAG            CHECKBIT(FLAG,6)
-#define CLEAR_SEND_VENT_DATA_FLAG      CLEARBIT(FLAG,6)
-#define SET_VENTILACION_DATA        SETBIT(FLAG,6)
-#define CLEAR_RESET                 CLEARBIT(app.instruccion,0) 
+volatile uint8_t FLAG = 0x00;
+ 
+#define TIMING_MCP_FLAG                     CHECKBIT(FLAG,2)
+#define TIMING_CLEAR_MCP_FLAG               CLEARBIT(FLAG,2)
+#define TIMING_SET_MCP_FLAG                 SETBIT(FLAG,2)  
+#define CAPTURAR_VTI_FLAG                   CHECKBIT(FLAG,4)
+#define CLEAR_CAPTURAR_VTI_FLAG             CLEARBIT(FLAG,4)
+#define SET_CAPTURAR_VTI_FLAG               SETBIT(FLAG,4)
+#define TIMING_GET_APP_COMMAND_FLAG         CHECKBIT(FLAG,5)
+#define TIMING_CLEAR_APP_COMMAND_FLAG       CLEARBIT(FLAG,5)
+#define TIMING_SET_COMMAND_FLAG             SETBIT(FLAG,5) 
+#define TIMING_SEND_DATA_FLAG               CHECKBIT(FLAG,6)
+#define TIMING_CLEAR_SEND_DATA_FLAG         CLEARBIT(FLAG,6)
+#define TIMING_SET_SEND_DATA_FLAG           SETBIT(FLAG,6) 
 
-#define IS_RESET_REQ                (app.instruccion == 0x01)
-#define IS_VENTILAR_REQ             (app.instruccion == 0x02)
-#define IS_PID_TUNNING_REQ          (app.instruccion == 0x03)
-#define IS_CAL_REQ                  (app.instruccion == 0x04)
+ 
 
-ErrorCode error;
-bool pidAire = false; 
-bool pidOxigeno = false; 
-bool pidConcentracion = false; 
+ErrorCode error; 
+ 
+volatile MainState gState = ST_BOOT; 
 
-int main(void) {  
-    while (1) {
-        if (inicializacion()) {
-            app.sendError(INIT_OK);  
-            CLEAR_RESET;    
-            while (!IS_RESET_REQ) {       
-                
-                if (GET_VENT_PARAMS_FLAG) {  
-                        monitorPowerSuply.getInfoCarga();
-                        if(app.getCommands()){
-                            setParametros(false);
-                        } 
-                        CLEAR_VENT_DATA_PARAMS_FLAG;
-                }
-                
-                if (SEND_VENT_DATA_FLAG) { 
-                       if (IS_PID_TUNNING_REQ){                        
-                           app.ventilacion.data.flujo = mezclador.data;
-                           app.sendCommand(APP_CMD_SINGLE_DATA); //aprox 3ms
-                       }else if(IS_VENTILAR_REQ){
-                           app.sendCommand(APP_CMD_VENTILACION_DATA);                            
-                       }
-                       CLEAR_SEND_VENT_DATA_FLAG;                        
-                }                
-                
-                if(IS_PID_TUNNING_REQ){                    
-                    monitorPowerSuply.cerrarValvulaSeguridad(true); 
-                    if (app.getCommand(true,APP_CMD_PROCESOS_CONSTANTES_PID,0)) { //14ms o 0.3ms operando
-                        setParametros(true);
-                        if(app.procesos.constantesPID.indice==4){
-                            pidAire = true;
-                        }else{
-                            pidAire = false;
-                        }
-                         if(app.procesos.constantesPID.indice==3){
-                            pidConcentracion = true;
-                        }else{
-                            pidConcentracion = false;
-                        }
-                        if(app.procesos.constantesPID.indice==5){
-                            pidOxigeno = true;
-                        }else{
-                            pidOxigeno = false;
-                        }
-                    }
-                    if  (pidAire){                        
-                        mezclador.mezclarAire();                 
-                    }  
-                    if  (pidOxigeno){
-                        mezclador.mezclarOxigeno();
-                    }        
-                    if  (pidConcentracion){ 
-                        if (READ_MCP_FLAG) {  
-                            leerMCP2();     
-                            mezclador.cl  = app.ventilacion.data.fiO2*3065.9f - 3.6271f; 
-                            mezclador.cl = mezclador.cl/100.0f;
-                            CLEAR_READ_MCP_FLAG;
-                        } 
-                        mezclador.mezclar();
-                    }
-                } else if (IS_VENTILAR_REQ) {                    
-                    if (READ_MCP_FLAG) {   
-                        leerMCP2();
-                        CLEAR_READ_MCP_FLAG;
-                    }                                          
-                    monitorPowerSuply.cerrarValvulaSeguridad(true);                  
-                   
-                    if (app.ventilacion.data.fase == 1 && !FLAG_TAKE_VTI) {
-                        SET_FLAG_TAKE_VTI;
-                    }
-                    if (app.ventilacion.data.fase == 2 && FLAG_TAKE_VTI) {
-                        app.ventilacion.data.vti = app.ventilacion.data.volumen;
-                        CLEAR_FLAG_TAKE_VTI;
-                    }
-                    mezclador.fm = getFlujoMeta();
-                    mezclador.cm = app.ventilacion.parametros.fiO2;
-                    if (mezclador.mezclar()) {
-                        t2 = cnt_ventilacion*TIMER3_PERIOD;
-                        app.ventilacion.data.deltaT = (t2 - t1);
-                        app.ventilacion.data.volumen += (app.ventilacion.data.deltaT)*(app.ventilacion.data.flujo / 60)*1000;
-                        t1 = t2; 
-                    }
-                    if (app.ventilacion.data.fase == 1) {
-                        valvulaExpiratoria.cerrar();
-                    } else if (app.ventilacion.data.fase == 2) {
-                        valvulaExpiratoria.controlPeep(app.ventilacion.parametros.peep);
-                    }                        
-                    if (sfmProxi.leerFlujo()) {
-                        app.ventilacion.data.flujo = sfmProxi.flow;
-                        app.sendCommand(APP_CMD_SINGLE_DATA);  
-                    }    
-                    
-                } else {
-                    monitorPowerSuply.cerrarValvulaSeguridad(false);
-                }           
+int main(void) {
+    while (1) {  
+        if(gState == ST_BOOT){
+            if (inicializacion()) {
+                app.sendError(INIT_OK);
+                cambiarEstado(ST_IDLE);
+            } else {
+                app.sendError(error);
+                __delay_ms(1000);
             }
-            CLEAR_RESET;
-            app.sendError(RESETING);
+        }else{
+            getAppCommands();
+            sendAppData();
+            switch (gState) {  
+                case ST_IDLE: 
+                    monitorPowerSuply.cerrarValvulaSeguridad(false);
+                    break; 
+                case ST_VENTILANDO: 
+                    ejecutarVentilacion();
+                    break; 
+                case ST_PID_TUNING: 
+                    ejecutarPidTuning();
+                    break; 
+                case ST_MANUAL_PWM: 
+                    ejecutarManualPWM();
+                    break;  
+                case ST_RESET: 
+                    ejecutarReset();
+                    break;  
+                default:
+                    //Estado prohibido
+                    ejecutarReset();
+                    break;
+            }
+        } 
+    }
+}
+ 
+static void cambiarEstado(MainState nuevoEstado) {
+    if (gState == nuevoEstado) return; 
+    onExitEstado((MainState)gState);
+    gState = nuevoEstado;
+    onEnterEstado(nuevoEstado);
+}
+
+static void onEnterEstado(MainState estado) {
+    switch (estado) { 
+        case ST_VENTILANDO:
+            resetVariablesVentilacion();
+            break; 
+        case ST_MANUAL_PWM:
+            mezclador.startManualPWM();
+            break; 
+        case ST_PID_TUNING:
+            pidTuningIndex = 0xFF;
+            break; 
+        default:
+            break;
+    }
+}
+
+static void onExitEstado(MainState estado) {
+    switch (estado) {
+        case ST_MANUAL_PWM:
+            mezclador.stopManualPWM();
+            break; 
+        case ST_PID_TUNING:
+            pidTuningIndex = 0xFF;
+            break;
+        default:
+            break;
+    }
+}
+
+static void getAppCommands(void) {
+    if (TIMING_GET_APP_COMMAND_FLAG) {
+        monitorPowerSuply.getInfoCarga();
+        
+        /*ToDo: el comando y estado de calibracion no esta implementado.*/
+        if (app.getCommands()) {
+            switch (app.instruccion) {
+                case 0x01: cambiarEstado(ST_RESET); break;
+                case 0x02: cambiarEstado(ST_VENTILANDO); break;
+                case 0x03: cambiarEstado(ST_PID_TUNING); break;
+                case 0x05: cambiarEstado(ST_MANUAL_PWM); break;
+                case 0x06: cambiarEstado(ST_IDLE); break;
+            }
+            onCommandReceived(false);
+        }
+
+        TIMING_CLEAR_APP_COMMAND_FLAG;
+    }
+}
+
+static void ejecutarVentilacion(void){
+    
+    if (TIMING_MCP_FLAG) {   
+        leerMCP2();
+        TIMING_CLEAR_MCP_FLAG;
+    }   
+    
+    monitorPowerSuply.cerrarValvulaSeguridad(true);         
+    
+    if (app.ventilacion.data.fase == 1) {
+        if(!CAPTURAR_VTI_FLAG) SET_CAPTURAR_VTI_FLAG;
+        valvulaExpiratoria.cerrar();
+    } else if (app.ventilacion.data.fase == 2) {
+        if(CAPTURAR_VTI_FLAG) {
+            app.ventilacion.data.vti = app.ventilacion.data.volumen;
+            CLEAR_CAPTURAR_VTI_FLAG;
+        }
+        valvulaExpiratoria.controlPeep(app.ventilacion.parametros.peep);
+    }   
+ 
+    
+    mezclador.fm = getFlujoMeta();
+    mezclador.cm = app.ventilacion.parametros.fiO2;
+    if (mezclador.mezclar()) {
+        app.ventilacion.data.flujo = mezclador.data;
+        t2 = (float)cnt_timing_ventilacion * TIMER3_PERIOD;
+        app.ventilacion.data.deltaT = (t2 - t1);
+        app.ventilacion.data.volumen += (app.ventilacion.data.deltaT)*(app.ventilacion.data.flujo / 60)*1000;
+        t1 = t2; 
+    } 
+     
+           
+    if (sfmProxi.leerFlujo()) {
+        app.ventilacion.data.flujoProximal = sfmProxi.flow; 
+    }
+}
+ 
+static void ejecutarPidTuning(void) {
+    monitorPowerSuply.cerrarValvulaSeguridad(true);
+    
+    if (app.getCommand(true, APP_CMD_PROCESOS_CONSTANTES_PID, 0)) {
+        onCommandReceived(true);
+        pidTuningIndex = app.procesos.constantesPID.indice;
+    }
+    switch (pidTuningIndex) {
+        case 3:
+            if (TIMING_MCP_FLAG) {
+                leerMCP2();
+                mezclador.cl = (app.ventilacion.data.fiO2 * 3065.9f - 3.6271f) / 100.0f;
+                TIMING_CLEAR_MCP_FLAG;
+            }
+            mezclador.mezclar();
+            break; 
+        case 4:
+            mezclador.mezclarAire();
+            break;
+        case 5:
+            mezclador.mezclarOxigeno();
+            break;
+    }
+}
+
+static void ejecutarManualPWM(void) { 
+    monitorPowerSuply.cerrarValvulaSeguridad(true); 
+    if (app.getCommand(true, APP_CMD_PROCESOS_SET_PWM, 0)) {
+        if (app.procesos.pwm.oxigeno) {
+            mezclador.setPWMOxigeno(app.procesos.pwm.porcentaje);
         } else {
-            app.sendError(error);
+            mezclador.setPWMAire(app.procesos.pwm.porcentaje);
         }
     }
 }
 
-bool inicializacion(void) {
+static void ejecutarReset(void) {
+    monitorPowerSuply.cerrarValvulaSeguridad(false);
+    mezclador.stopManualPWM();
+    resetVariablesVentilacion();
+    app.sendError(RESETING);
+    cambiarEstado(ST_BOOT); 
+}
+
+static void resetVariablesVentilacion(void) {
+    cnt_timing_send_data = 0;
+    cnt_timing_ventilacion =0;
+    t1 = 0.0f;
+    t2 = 0.0f;
+    app.ventilacion.data.volumen = 0.0f;
+    app.ventilacion.data.vti = 0.0f;
+    app.ventilacion.data.deltaT = 0.0f;
+    app.ventilacion.data.fase = 1;
+    CLEAR_CAPTURAR_VTI_FLAG;
+}
+
+static void sendAppData(void) {
+    if (TIMING_SEND_DATA_FLAG) {
+        switch (gState) {
+            case ST_PID_TUNING:
+                app.ventilacion.data.singleData = mezclador.data;
+                app.sendCommand(APP_CMD_SINGLE_DATA);
+                break;
+            case ST_VENTILANDO:
+                app.sendCommand(APP_CMD_VENTILACION_DATA);
+                break;
+            default:
+                break;
+        } 
+        TIMING_CLEAR_SEND_DATA_FLAG;
+    }
+}
+ 
+static bool inicializacion(void) {
   
     /*inicializa los componentes de hardware*/
     SYSTEM_Initialize();
@@ -185,7 +283,7 @@ bool inicializacion(void) {
                 while (i < 7) {
                     uint8_t args[] = {i};
                     if (app.sendCommandAndWaitWithArgs(APP_CMD_PROCESOS_GET_CONSTANTES_PID, APP_CMD_PROCESOS_CONSTANTES_PID, args, 1)) {
-                        setParametros(false);
+                        onCommandReceived(false);
                     } else {
                         error = GET_PID_PARAM_ERROR;
                         app.sendError(error);
@@ -198,7 +296,7 @@ bool inicializacion(void) {
                     while (i < 8) {
                         uint8_t args[] = {i};
                         if (app.sendCommandAndWaitWithArgs(APP_CMD_PROCESOS_GET_CALIBRACION, APP_CMD_PROCESOS_CALIBRACION, args, 1)) {
-                            setParametros(false);
+                            onCommandReceived(false);
                         } else {
                             error = GET_CALIBRACION_ERROR;
                             app.sendError(error);
@@ -228,36 +326,48 @@ bool inicializacion(void) {
     
 };
 
-void setParametros(bool test) {
-    
-        if (app.received.command == APP_CMD_PROCESOS_CONSTANTES_PID) {
-            if (app.procesos.constantesPID.indice >= 0 && app.procesos.constantesPID.indice < 6) {
-                mezclador.setConstatesPID(app.procesos.constantesPID.indice, app.procesos.constantesPID.constantes,test);
-            }
-            if (app.procesos.constantesPID.indice == 6) {
+static void onCommandReceived(bool test) {
+    switch (app.received.command) {
+        case APP_CMD_PROCESOS_CONSTANTES_PID: {
+            uint8_t indice = app.procesos.constantesPID.indice;
+
+            if (indice < 6) {
+                mezclador.setConstatesPID(
+                    indice,
+                    app.procesos.constantesPID.constantes,
+                    test
+                );
+            } else if (indice == 6) {
                 presionPIDreq.constantes = app.procesos.constantesPID.constantes;
-            } 
-        }
-        if (app.received.command == APP_CMD_PROCESOS_CALIBRACION) {
-            if (app.procesos.calibracion.indice >= 0 && app.procesos.calibracion.indice < 6) {
-                mezclador.setCalibracion(app.procesos.calibracion.indice, app.procesos.calibracion.m, app.procesos.calibracion.b);
             }
-            if (app.procesos.calibracion.indice == 6) {
+            break;
+        }
+
+        case APP_CMD_PROCESOS_CALIBRACION: {
+            uint8_t indice = app.procesos.calibracion.indice;
+
+            if (indice < 6) {
+                mezclador.setCalibracion(
+                    indice,
+                    app.procesos.calibracion.m,
+                    app.procesos.calibracion.b
+                );
+            } else if (indice == 6) {
                 presionInspM = app.procesos.calibracion.m;
                 presionInspB = app.procesos.calibracion.b;
-            }
-            if (app.procesos.calibracion.indice == 7) {
+            } else if (indice == 7) {
                 presionExpM = app.procesos.calibracion.m;
                 presionExpB = app.procesos.calibracion.b;
-            } 
+            }
+            break;
         }
-        if (app.received.command == APP_CMD_PROCESOS_INSTRUCCION) {
-            app.instruccion = app.instruccion; 
-        }
-   
+
+        default:
+            break;
+    }
 }
 
-float getFlujoMeta(void) {
+static float getFlujoMeta(void) {
     if (app.ventilacion.data.fase == 1) {
         if (app.ventilacion.parametros.modo == VENTILACION_MVC) {
             if (app.ventilacion.parametros.formaOnda == VENTILACION_SQR) {
@@ -266,7 +376,8 @@ float getFlujoMeta(void) {
             } else if (app.ventilacion.parametros.formaOnda == VENTILACION_SIN) {
                 app.ventilacion.parametros.fi = 1 / (app.ventilacion.parametros.ti / 60);
                 app.ventilacion.parametros.qi = (app.ventilacion.parametros.volumen / 1000.0) / (2 * app.ventilacion.parametros.ti);
-                app.ventilacion.parametros.flujo = app.ventilacion.parametros.qi * (0.06) * sin(3.1415926535898 * app.ventilacion.parametros.fi * (cnt_ventilacion * TIMER3_PERIOD));
+                float tVent = (float)cnt_timing_ventilacion * TIMER3_PERIOD;
+                app.ventilacion.parametros.flujo = app.ventilacion.parametros.qi * (0.06) * sin(3.1415926535898 * app.ventilacion.parametros.fi * (tVent));
                 return app.ventilacion.parametros.flujo;
             } else if (app.ventilacion.parametros.formaOnda == VENTILACION_DES) {
                 return 0;
@@ -286,48 +397,44 @@ float getFlujoMeta(void) {
 
 void timingTimerCallBack() {
 
-    cnt_mcp++;
-    cnt_mezclar++;
-    cnt_ventilacion_data++;
-    cnt_ventilacion_params++;
+    cnt_timing_mcp++; 
+    cnt_timing_send_data++;
+    cnt_timing_get_command++;
    
     
-    if (cnt_ventilacion_data * TIMER3_PERIOD >= 0.020) {
-        SET_VENTILACION_DATA;
-        cnt_ventilacion_data = 0;
+    if (cnt_timing_send_data >= TICKS_SEND_DATA) {
+        TIMING_SET_SEND_DATA_FLAG;
+        cnt_timing_send_data = 0;
     }
 
-    if (cnt_ventilacion_params * TIMER3_PERIOD >= 1) {
-        SET_VENTILACION_PARAMS;
-        cnt_ventilacion_params = 0;
+    if (cnt_timing_get_command >= TICKS_GET_COMMAND   ) {
+        TIMING_SET_COMMAND_FLAG;
+        cnt_timing_get_command = 0;
+    }
+ 
+    if (cnt_timing_mcp  >= TICKS_MCP) {
+        TIMING_SET_MCP_FLAG;
+        cnt_timing_mcp = 0;
     }
 
-    if (cnt_mezclar * TIMER3_PERIOD >= 0.001) {
-        SET_MEZCLAR;
-        cnt_mezclar = 0;
-    }
-
-    if (cnt_mcp * TIMER3_PERIOD >= 0.250) {
-        SET_MCP;
-        cnt_mcp = 0;
-    }
-
-    if (IS_VENTILAR_REQ) {
-        cnt_ventilacion++;
-        if (cnt_ventilacion * TIMER3_PERIOD <= app.ventilacion.parametros.ti) {
+    // Control del timing de la ventilacion
+    if (gState == ST_VENTILANDO) {
+        cnt_timing_ventilacion++;
+        float tVent = (float)cnt_timing_ventilacion * TIMER3_PERIOD;
+        if (tVent <= app.ventilacion.parametros.ti) {
             app.ventilacion.data.fase = 1;
-        } else if ((cnt_ventilacion * TIMER3_PERIOD > app.ventilacion.parametros.ti) && (cnt_ventilacion * TIMER3_PERIOD <= app.ventilacion.parametros.tt)) {
+        } else if ((tVent > app.ventilacion.parametros.ti) && (tVent <= app.ventilacion.parametros.tt)) {
             app.ventilacion.data.fase = 2;
-        } else if (cnt_ventilacion * TIMER3_PERIOD > app.ventilacion.parametros.tt) {            
+        } else if (tVent > app.ventilacion.parametros.tt) {            
             app.ventilacion.data.ciclo++;
             app.ventilacion.data.volumen = 0;
-            cnt_ventilacion = 0;
+            cnt_timing_ventilacion = 0;
         }
     }
 
 }
 
-void leerMCP2() {
+static void leerMCP2() {
     float volt = 0;
     if (PCA9543APW_setCanal(0x71, 1)) {
         if (Mcp342x_leerConversion(MCP3428_ADDR, mcp2ch, &volt)) {

@@ -23,7 +23,8 @@ typedef enum {
     APP_CMD_PROCESOS_CONSTANTES_PID=9,
     APP_CMD_PROCESOS_GET_CALIBRACION = 10,
     APP_CMD_PROCESOS_GET_CONSTANTES_PID=11,
-             APP_CMD_SINGLE_DATA = 12
+    APP_CMD_SINGLE_DATA = 12,
+    APP_CMD_PROCESOS_SET_PWM = 13
 } AppCommandType;
  
 typedef enum {
@@ -68,7 +69,9 @@ typedef struct {
 typedef struct {
     uint8_t ciclo;
     uint8_t fase;
+    float singleData;
     float flujo;
+    float flujoProximal;
     float tempFlujo; //Temperatura del flujo
     float fiO2;
     float presionInsp;
@@ -99,10 +102,16 @@ typedef struct {
     PIDconstantes constantes;  
 } AppCommand_Procesos_ConstantesPID;
 
+typedef struct {
+    bool    oxigeno;
+    float   porcentaje;  
+} AppCommand_Procesos_PWM;
+
 
 typedef struct {
     AppCommand_Procesos_ConstantesPID    constantesPID;
-    AppCommand_Procesos_Calibracion calibracion;  
+    AppCommand_Procesos_Calibracion calibracion; 
+    AppCommand_Procesos_PWM pwm;
 } AppCommand_Procesos;
 
 typedef struct {

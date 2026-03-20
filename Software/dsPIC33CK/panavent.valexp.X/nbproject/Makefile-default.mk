@@ -89,14 +89,14 @@ MP_LINKER_FILE_OPTION=,--script=p33CK32MC102.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/valvulaExpiratoria.o: valvulaExpiratoria.c  .generated_files/flags/default/19929ae66dc78531564eedfaccb8d9999abdb47 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/valvulaExpiratoria.o: valvulaExpiratoria.c  .generated_files/flags/default/5d65be8f0cd14a21fcd0d24d477bd5871b76d76b .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/valvulaExpiratoria.o.d 
 	@${RM} ${OBJECTDIR}/valvulaExpiratoria.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  valvulaExpiratoria.c  -o ${OBJECTDIR}/valvulaExpiratoria.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/valvulaExpiratoria.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 else
-${OBJECTDIR}/valvulaExpiratoria.o: valvulaExpiratoria.c  .generated_files/flags/default/d89367feb3c4c2156c0d283fc8a26a7d85996974 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/valvulaExpiratoria.o: valvulaExpiratoria.c  .generated_files/flags/default/da3c1f2c37c60e0a1a6a0c62ddab1120267a4c17 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/valvulaExpiratoria.o.d 
 	@${RM} ${OBJECTDIR}/valvulaExpiratoria.o 
@@ -148,7 +148,7 @@ endif
 # Enable dependency checking
 .dep.inc: .depcheck-impl
 
-DEPFILES=$(shell mplabwildcard ${POSSIBLE_DEPFILES})
+DEPFILES=$(wildcard ${POSSIBLE_DEPFILES})
 ifneq (${DEPFILES},)
 include ${DEPFILES}
 endif

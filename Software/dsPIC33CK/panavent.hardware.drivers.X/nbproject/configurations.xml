@@ -51,6 +51,12 @@
       <itemPath>timer3Controller.h</itemPath>
       <itemPath>timerController_interface.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="true">
+      <itemPath>Makefile</itemPath>
+      <itemPath>panavent.hardware.drivers.mc3</itemPath>
+    </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
@@ -103,12 +109,6 @@
       <itemPath>pca9543apw_interface.c</itemPath>
       <itemPath>timer1Controller.c</itemPath>
       <itemPath>timer3Controller.c</itemPath>
-    </logicalFolder>
-    <logicalFolder name="ExternalFiles"
-                   displayName="Important Files"
-                   projectFiles="false">
-      <itemPath>Makefile</itemPath>
-      <itemPath>panavent.hardware.drivers.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

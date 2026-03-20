@@ -59,7 +59,7 @@ float o2Time = 0;
 bool o2PID = false;
 
 volatile  bool dispararConversion;
-
+volatile  bool enManualPWM = false;
 
 MovingAverageFilter o2Filter;
 MovingAverageFilter airFilter;
@@ -78,7 +78,11 @@ Mezclador mezclador = {
     .mezclar = &Mezclador_mezclar,
     .mezclarAire = &Mezclador_mezclarAire,
     .mezclarOxigeno = &Mezclador_mezclarOxigeno,
-    .leerPresiones = &Mezclador_leerPresiones
+    .leerPresiones = &Mezclador_leerPresiones,
+    .setPWMAire = &Mezclador_setPWMAire,
+    .setPWMOxigeno = &Mezclador_setPWMOxigeno,
+    .startManualPWM = &Mezclador_startManualPWM,
+    .stopManualPWM = &Mezclador_stopManualPWM
 };
 
 
@@ -180,6 +184,7 @@ void Mezclador_timerCallBack() {
 
 void Mezclador_conversionCallBack(enum ADC_CHANNEL ch, uint16_t adcVal) {
     
+    
     // Coversion a voltaje y división entre 100 para eliminar la ganancia.
     float volt = 0.00000805860805860806f * (float) adcVal; //0.0008058608058608060000 * 0.01 
 
@@ -211,17 +216,19 @@ void Mezclador_conversionCallBack(enum ADC_CHANNEL ch, uint16_t adcVal) {
     vData->corriente = filter_new_sample(filter, corriente);
     pidReq->meta = vData->corrienteMeta;
     pidReq->medicion = vData->corriente;
-   
+
     if (testIndex==1 && !isOxi) {mezclador.data =  vData->corriente;}
     if (testIndex==0 && isOxi) {mezclador.data =  vData->corriente;}
-    
+
     // Calcular y ajustar el ciclo de trabajo PWM
-    if (pid.calcular(pidReq)) {
+    if (!enManualPWM && pid.calcular(pidReq)) {
         int pwmDtc = pidReq->calculos.output * FULL_PERIOD_PWM_VAL;
         vData->pwm->PWM_DutyCycleSet(pwmDtc);
     }
 
     dispararConversion = true;
+    
+
 }
 
 
@@ -336,3 +343,27 @@ void Mezclador_setCalibracion(uint8_t index, float M, float B) {
     }
 }
 
+
+void Mezclador_setPWMAire(float porcentaje) {
+    Mezclador_setPWM(&vAire, porcentaje);
+};
+
+void Mezclador_setPWMOxigeno(float porcentaje){
+     Mezclador_setPWM(&vOxi, porcentaje);
+};
+
+void Mezclador_setPWM(Valvula * valvula, float porcentaje){
+    enManualPWM = true;
+    if (porcentaje < 0.0f) porcentaje = 0.0f;
+    if (porcentaje > 1.0f) porcentaje = 1.0f;
+    int pwmDtc = porcentaje * FULL_PERIOD_PWM_VAL;
+    valvula->pwm->PWM_DutyCycleSet(pwmDtc);
+};
+
+void Mezclador_startManualPWM(){
+    enManualPWM = true;
+}
+
+void Mezclador_stopManualPWM(){
+    enManualPWM = false;
+}

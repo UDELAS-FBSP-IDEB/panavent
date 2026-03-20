@@ -126,6 +126,11 @@ namespace panavent.app.core
                                                 var getConstantesPID = new GetConstantesPID(input.ToArray());
                                                 OnGetConstantesPIDCommandReceived(getConstantesPID.Indice, getConstantesPID.SequenceNumber ); 
                                                 break;
+                                            case AppCommandType.APP_CMD_PROCESOS_SET_PWM:
+                                                Debug.WriteLine("APP_CMD_PROCESOS_SET_PWM");
+                                                var setPWM = new SetPWM(input.ToArray());
+                                                EnqueuePacket(new Ack() { SequenceNumber = setPWM.SequenceNumber });
+                                                break;
                                             case AppCommandType.APP_CMD_PROTOCOLO_ACK:
                                                 Debug.WriteLine("ACK recibido"); 
                                                 break;

@@ -51,7 +51,7 @@ namespace panavent.app.monitor
         public async void InicializarBridge()
         {
             LogString = String.Format("{0}\n", "Inicializando...");
-            var selector = SerialDevice.GetDeviceSelector("COM16");
+            var selector = SerialDevice.GetDeviceSelector("COM11");
             DeviceInformationCollection serialDeviceInfos = await DeviceInformation.FindAllAsync(selector);
             if (serialDeviceInfos != null && serialDeviceInfos.Count > 0)
             {

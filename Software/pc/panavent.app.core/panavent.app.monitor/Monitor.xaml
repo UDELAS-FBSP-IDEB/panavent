@@ -584,6 +584,20 @@
                     <TextBlock>Aplicar PID</TextBlock>
                 </StackPanel>
             </Button>
+            <TextBlock Text="PWM" Margin="0,25,0,0"   />
+            <TextBox x:Name="txPWM" Text="1" />
+            <Button x:Name="btnPWMAire"  Margin="0,10,0,0" Width="251" Click="btnPWMAire_Click"  >
+                <StackPanel>
+                    <SymbolIcon Symbol="Accept" />
+                    <TextBlock><Run Text="Enviar PWM Aire"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnPWMOxigeno"  Margin="0,10,0,0" Width="253" Click="btnPWMOxigeno_Click">
+                <StackPanel>
+                    <SymbolIcon Symbol="Accept" />
+                    <TextBlock><Run Text="Enviar PWM Oxigeno"/></TextBlock>
+                </StackPanel>
+            </Button>
         </StackPanel>
     </Grid>
 </Page>

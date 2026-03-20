@@ -3,7 +3,7 @@
 #ifndef UTILITIES_H
 #define	UTILITIES_H
 
-#define CHECKBIT(B, BIT)             ((B >> BIT) & 1)==1
+#define CHECKBIT(B, BIT)            (((B) >> (BIT)) & 1U)
 #define CLEARBIT(B,BIT)              B &= ~(1 << BIT)
 #define SETBIT(B,BIT)                B |= 1 << BIT
 #define TOGGLE(B,BIT)                B ^= 1 << BIT

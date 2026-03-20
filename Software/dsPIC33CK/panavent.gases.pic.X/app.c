@@ -162,6 +162,10 @@ bool App_getCommand(bool waitForCmd, AppCommandType waitCmdType, uint16_t waitCm
                                     app.procesos.constantesPID.constantes.testTarget =   UnpackFloat(&inputCmd[i], &i);
                                     app.procesos.constantesPID.indice = inputCmd[34];
                                     app.sendCommand(APP_CMD_PROTOCOLO_ACK);
+                                } else if (app.received.command == APP_CMD_PROCESOS_SET_PWM) {
+                                    app.procesos.pwm.porcentaje = UnpackFloat(&inputCmd[i], &i);
+                                    app.procesos.pwm.oxigeno = inputCmd[10];  
+                                    app.sendCommand(APP_CMD_PROTOCOLO_ACK);
                                 } else if (app.received.command == APP_CMD_PROCESOS_CALIBRACION) {                             
                                     app.procesos.calibracion.m = UnpackFloat(&inputCmd[i], &i);
                                     app.procesos.calibracion.b = UnpackFloat(&inputCmd[i], &i);
@@ -222,7 +226,7 @@ bool App_sendCommand(AppCommandType cmd) {
     }
     if (cmd == APP_CMD_SINGLE_DATA) {
         uint8_t buffer[4];
-        PackFloat(&buffer, app.ventilacion.data.flujo);
+        PackFloat(&buffer, app.ventilacion.data.singleData);
         return App_sendCommandWithArgs(cmd, buffer, 4);
     }
     if (cmd == APP_CMD_PROTOCOLO_ACK) {
@@ -230,7 +234,7 @@ bool App_sendCommand(AppCommandType cmd) {
         return App_sendCommandWithArgs(cmd, args, 1);
     }
     if (cmd == APP_CMD_VENTILACION_DATA) {
-        uint8_t buffer[47];
+        uint8_t buffer[51];
         PackFloat(&buffer, app.ventilacion.data.flujo);
         PackFloat(&buffer[4], app.ventilacion.data.presionInsp);
         PackFloat(&buffer[8], app.ventilacion.data.fiO2);
@@ -242,10 +246,11 @@ bool App_sendCommand(AppCommandType cmd) {
         PackFloat(&buffer[32], app.ventilacion.data.volumen);
         PackFloat(&buffer[36], app.ventilacion.data.vti);
         PackFloat(&buffer[40], app.ventilacion.data.deltaT);
-        buffer[44] = app.ventilacion.data.enSuministro ? 1 : 0;
-        buffer[45] = app.ventilacion.data.fase;
-        buffer[46] = app.ventilacion.data.ciclo;
-        return App_sendCommandWithArgs(APP_CMD_VENTILACION_DATA, buffer, 47);
+        PackFloat(&buffer[44], app.ventilacion.data.flujoProximal);
+        buffer[48] = app.ventilacion.data.enSuministro ? 1 : 0;
+        buffer[49] = app.ventilacion.data.fase;
+        buffer[50] = app.ventilacion.data.ciclo;
+        return App_sendCommandWithArgs(APP_CMD_VENTILACION_DATA, buffer, 51);
     }
     return false;
 }

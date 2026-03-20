@@ -33,6 +33,10 @@ typedef struct {
     float cm;
     float cl; 
     float data;
+    void (*setPWMAire)(float porcentaje);
+    void (*setPWMOxigeno)(float porcentaje);
+    void (*startManualPWM)();
+    void (*stopManualPWM)();
 } Mezclador;
 
 extern Mezclador mezclador;
@@ -49,6 +53,12 @@ float Mezclador_mezclarAire();
 float Mezclador_mezclarOxigeno();
 float Mezclador_mezclarGas(Sfm *sensor, float *flujo, float calB, int pidIndex, int mezcladorIndex, float *corrienteMeta, bool *filterInit, MovingAverageFilter *filter, float *meta);
 void Mezclador_leerPresiones();
+void Mezclador_setPWM(Valvula * valvula, float porcentaje);
+void Mezclador_setPWMAire(float porcentaje);
+void Mezclador_setPWMOxigeno(float porcentaje);
+
+void Mezclador_startManualPWM();
+void Mezclador_stopManualPWM();
 
 double butterworthFilter(double input);
 

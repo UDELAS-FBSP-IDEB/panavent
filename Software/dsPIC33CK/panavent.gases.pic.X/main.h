@@ -71,12 +71,30 @@
 #include <xc.h>
 #include <stdbool.h>
  
-bool inicializacion(void);  
-void setParametros(bool test);
-void timingTimerCallBack(); 
-void leerMCP2();
-float getFlujoMeta(void);
- 
+typedef enum {
+    ST_BOOT = 0,
+    ST_IDLE,
+    ST_VENTILANDO,
+    ST_PID_TUNING,
+    ST_MANUAL_PWM,
+    ST_RESET
+} MainState;
+
+static void cambiarEstado(MainState nuevoEstado);
+static void onEnterEstado(MainState estado); 
+static void onExitEstado(MainState estado);
+static void getAppCommands(void);
+static void ejecutarVentilacion(void);
+static void ejecutarPidTuning(void);
+static void ejecutarManualPWM(void);
+static void ejecutarReset(void);
+static void resetVariablesVentilacion(void);
+static void sendAppData(void);
+static bool inicializacion(void);
+static void onCommandReceived(bool test);
+static float getFlujoMeta(void);
+void timingTimerCallBack();
+static void leerMCP2();
 
 #endif	 
 

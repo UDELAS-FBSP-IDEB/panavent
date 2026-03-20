@@ -75,7 +75,8 @@ namespace panavent.app.core.comandos
         APP_CMD_PROCESOS_CONSTANTES_PID = 9,
         APP_CMD_PROCESOS_GET_CALIBRACION = 10,
         APP_CMD_PROCESOS_GET_CONSTANTES_PID = 11,
-        APP_CMD_SINGLE_DATA = 12
+        APP_CMD_SINGLE_DATA = 12,
+        APP_CMD_PROCESOS_SET_PWM = 13
     }
 
     public enum ErrorCode

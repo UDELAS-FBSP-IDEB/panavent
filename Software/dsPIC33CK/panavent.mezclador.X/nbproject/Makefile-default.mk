@@ -89,26 +89,26 @@ MP_LINKER_FILE_OPTION=,--script=p33CK32MC102.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/mcpMezclador.o: mcpMezclador.c  .generated_files/flags/default/7ba20b7dedd6947fc1a5ac7ae32087257c506b .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/mcpMezclador.o: mcpMezclador.c  .generated_files/flags/default/5a397f871d52a67ef5cdba3e8dd307f7c4cbd35f .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/mcpMezclador.o.d 
 	@${RM} ${OBJECTDIR}/mcpMezclador.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  mcpMezclador.c  -o ${OBJECTDIR}/mcpMezclador.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcpMezclador.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/mezclador.o: mezclador.c  .generated_files/flags/default/1a57334b2200dcfcea11c2d1a4341fee2146ccab .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/mezclador.o: mezclador.c  .generated_files/flags/default/aa5037a5ccc3a88e3076f26cd1bbc4e8fd3cce53 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/mezclador.o.d 
 	@${RM} ${OBJECTDIR}/mezclador.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  mezclador.c  -o ${OBJECTDIR}/mezclador.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mezclador.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 else
-${OBJECTDIR}/mcpMezclador.o: mcpMezclador.c  .generated_files/flags/default/c13703b55cb357d901dd6bdf202fd8823590a5e6 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/mcpMezclador.o: mcpMezclador.c  .generated_files/flags/default/ea9ab731abde860162966c45c374300837be99d0 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/mcpMezclador.o.d 
 	@${RM} ${OBJECTDIR}/mcpMezclador.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  mcpMezclador.c  -o ${OBJECTDIR}/mcpMezclador.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcpMezclador.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/mezclador.o: mezclador.c  .generated_files/flags/default/310ed68fd51ad25e1a0f8055c26d72fa71780836 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/mezclador.o: mezclador.c  .generated_files/flags/default/136787892f4f56f2f34591f9dfed7cd4bd240808 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/mezclador.o.d 
 	@${RM} ${OBJECTDIR}/mezclador.o 
@@ -160,7 +160,7 @@ endif
 # Enable dependency checking
 .dep.inc: .depcheck-impl
 
-DEPFILES=$(shell mplabwildcard ${POSSIBLE_DEPFILES})
+DEPFILES=$(wildcard ${POSSIBLE_DEPFILES})
 ifneq (${DEPFILES},)
 include ${DEPFILES}
 endif
