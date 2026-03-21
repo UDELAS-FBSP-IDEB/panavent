@@ -70,7 +70,8 @@
 
 #include <xc.h>
 #include <stdbool.h>
- 
+#include "app.h"
+
 typedef enum {
     ST_BOOT = 0,
     ST_IDLE,
@@ -81,20 +82,34 @@ typedef enum {
 } MainState;
 
 static void cambiarEstado(MainState nuevoEstado);
-static void onEnterEstado(MainState estado); 
+static void onEnterEstado(MainState estado);
 static void onExitEstado(MainState estado);
+
 static void getAppCommands(void);
+static void procesarEventosApp(void);
+
 static void ejecutarVentilacion(void);
 static void ejecutarPidTuning(void);
 static void ejecutarManualPWM(void);
 static void ejecutarReset(void);
+
 static void resetVariablesVentilacion(void);
 static void sendAppData(void);
 static bool inicializacion(void);
-static void onCommandReceived(bool test);
+
+static void procesarConstantesPID(bool test);
+static void procesarCalibracion(void);
+
 static float getFlujoMeta(void);
-void timingTimerCallBack();
-static void leerMCP2();
+void timingTimerCallBack(void);
+static void leerMCP2(void);
+
+/* Callbacks */
+static void Main_OnVentilacionParams(const AppVentilacionParams *args);
+static void Main_OnConstantesPID(const AppConstantesPID *args);
+static void Main_OnCalibracionData(const AppCalibracionData *args);
+static void Main_OnPWMData(const AppPWMData *args);
+static void Main_OnInstruccion(uint8_t instruccion);
 
 #endif	 
 

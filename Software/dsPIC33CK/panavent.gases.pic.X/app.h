@@ -1,32 +1,29 @@
 #ifndef APP_H
-#define	APP_H 
+#define APP_H
+
 #include <stdbool.h>
-#include <stdint.h>
+#include <stdint.h> 
 #include "comun.h"
-#include "../panavent.utilities.X/pid.h"
 #include "../panavent.utilities.X/utilities.h"
+#include "../panavent.utilities.X/pid.h"
 
-#define SOH 0x01
-#define STX 0x02
-#define ETX 0x03  
-
-typedef enum {    
-    APP_CMD_NONE=0,
-    APP_CMD_PROTOCOLO_ERROR_CODE=1,
-    APP_CMD_PROTOCOLO_PING=2,
+typedef enum {
+    APP_CMD_NONE = 0,
+    APP_CMD_PROTOCOLO_ERROR_CODE = 1,
+    APP_CMD_PROTOCOLO_PING = 2,
     APP_CMD_PROTOCOLO_ACK = 3,
-    APP_CMD_PROTOCOLO_NACK=4, 
-    APP_CMD_VENTILACION_PARAMETROS=5, 
-    APP_CMD_VENTILACION_DATA=6,
+    APP_CMD_PROTOCOLO_NACK = 4,
+    APP_CMD_VENTILACION_PARAMETROS = 5,
+    APP_CMD_VENTILACION_DATA = 6,
     APP_CMD_PROCESOS_INSTRUCCION = 7,
     APP_CMD_PROCESOS_CALIBRACION = 8,
-    APP_CMD_PROCESOS_CONSTANTES_PID=9,
+    APP_CMD_PROCESOS_CONSTANTES_PID = 9,
     APP_CMD_PROCESOS_GET_CALIBRACION = 10,
-    APP_CMD_PROCESOS_GET_CONSTANTES_PID=11,
+    APP_CMD_PROCESOS_GET_CONSTANTES_PID = 11,
     APP_CMD_SINGLE_DATA = 12,
     APP_CMD_PROCESOS_SET_PWM = 13
 } AppCommandType;
- 
+
 typedef enum {
     IE11,
     IE12,
@@ -38,14 +35,14 @@ typedef enum {
 } Ventilacion_IE;
 
 typedef enum {
-    VENTILACION_MVC=1,
-    VENTILACION_MPC =2
+    VENTILACION_MVC = 1,
+    VENTILACION_MPC = 2
 } Ventilacion_Modo;
 
 typedef enum {
-    VENTILACION_SQR=1,
-    VENTILACION_SIN =2,
-    VENTILACION_DES =3
+    VENTILACION_SQR = 1,
+    VENTILACION_SIN = 2,
+    VENTILACION_DES = 3
 } Ventilacion_FormaOnda;
 
 typedef struct {
@@ -61,18 +58,17 @@ typedef struct {
     float pi;
     float tt;
     float ti;
-    float te; 
+    float te;
     float qi;
-    float fi; 
-} AppCommand_Ventilacion_Parametros;
+    float fi;
+} AppVentilacionParams;
 
 typedef struct {
     uint8_t ciclo;
-    uint8_t fase;
-    float singleData;
+    uint8_t fase; 
     float flujo;
     float flujoProximal;
-    float tempFlujo; //Temperatura del flujo
+    float tempFlujo;
     float fiO2;
     float presionInsp;
     float presionExp;
@@ -88,69 +84,48 @@ typedef struct {
     float nivelBateria;
     float deltaT;
     bool enSuministro;
-} AppCommand_Ventilacion_Data;
+} AppVentilacionData;
 
 typedef struct {
     uint8_t indice;
-    float valor; 
+    float valor;
     float m;
     float b;
-} AppCommand_Procesos_Calibracion;
+} AppCalibracionData;
 
 typedef struct {
-    uint8_t    indice;
-    PIDconstantes constantes;  
-} AppCommand_Procesos_ConstantesPID;
+    uint8_t indice;
+    PIDconstantes constantes;
+} AppConstantesPID;
 
 typedef struct {
-    bool    oxigeno;
-    float   porcentaje;  
-} AppCommand_Procesos_PWM;
+    bool oxigeno;
+    float porcentaje;
+} AppPWMData;
 
-
-typedef struct {
-    AppCommand_Procesos_ConstantesPID    constantesPID;
-    AppCommand_Procesos_Calibracion calibracion; 
-    AppCommand_Procesos_PWM pwm;
-} AppCommand_Procesos;
-
-typedef struct {
-    AppCommand_Ventilacion_Parametros    parametros;
-    AppCommand_Ventilacion_Data data;  
-} AppCommand_Ventilacion;
-
+typedef void (*AppOnVentilacionParams)(const AppVentilacionParams *args);
+typedef void (*AppOnConstantesPID)(const AppConstantesPID *args);
+typedef void (*AppOnCalibracionData)(const AppCalibracionData *args);
+typedef void (*AppOnPWMData)(const AppPWMData *args);
+typedef void (*AppOnInstruccion)(uint8_t instruccion);
 
 typedef struct {
-    AppCommandType command;
-    uint16_t sequenceNumber;
-} AppCommand_Received;
-
-
-typedef struct {  
-    uint8_t addr;
-    uint8_t instruccion;    
-    AppCommand_Received received;    
-    AppCommand_Procesos procesos;
-    AppCommand_Ventilacion ventilacion;    
-    bool (*sendCommandAndWait)(AppCommandType cmd, AppCommandType waitCmd);
-    bool (*getCommands)(); 
-    bool (*getCommand)(bool waitForCmd, AppCommandType waitCmdType, uint16_t waitCmdSequenceNumber);  
-    bool (*sendCommand)(AppCommandType cmd);
-    bool (*sendCommandAndWaitWithArgs)(AppCommandType cmd, AppCommandType waitCmd, uint8_t * command, uint8_t len);
-    bool (*sendError)(ErrorCode e);
-    void (*inicializar)();
+    AppOnVentilacionParams onVentilacionParams;
+    AppOnConstantesPID onConstantesPID;
+    AppOnCalibracionData onCalibracionData;
+    AppOnPWMData onPWMData;
+    AppOnInstruccion onInstruccion;
+    bool (*sendVentilacionData)(AppVentilacionData data);  
+    bool (*sendData)(float data);  
+    bool (*sendError)(ErrorCode e);  
+    void (*inicializar)(void);
 } App;
 
 extern App app;
 
-bool App_SendCommandAndWait(AppCommandType cmd, AppCommandType waitCmd);
-bool App_getCommands(); 
-bool App_getCommand(bool waitForCmd, AppCommandType waitCmdType, uint16_t waitCmdSequenceNumber); 
-void App_inicializar(); 
-void App_TimeOutTimerCallBack();
-bool App_sendCommand(AppCommandType cmd);
-bool App_sendCommandWithArgs(AppCommandType cmd, uint8_t * command, uint8_t len);
-bool App_sendCommandAndWaitWithArgs(AppCommandType cmd, AppCommandType waitCmd, uint8_t * command, uint8_t len);
+void App_inicializar(void);
+bool App_sendVentilacionData(AppVentilacionData data);
+bool App_sendData(float data);
 bool App_sendError(ErrorCode e);
-    
-#endif	
+
+#endif

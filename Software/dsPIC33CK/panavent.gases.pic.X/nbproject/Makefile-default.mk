@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c app.c monitorPowerSupply.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c app.c monitorPowerSupply.c comm.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/app.o ${OBJECTDIR}/monitorPowerSupply.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/app.o.d ${OBJECTDIR}/monitorPowerSupply.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/app.o ${OBJECTDIR}/monitorPowerSupply.o ${OBJECTDIR}/comm.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/app.o.d ${OBJECTDIR}/monitorPowerSupply.o.d ${OBJECTDIR}/comm.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/app.o ${OBJECTDIR}/monitorPowerSupply.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/app.o ${OBJECTDIR}/monitorPowerSupply.o ${OBJECTDIR}/comm.o
 
 # Source Files
-SOURCEFILES=main.c app.c monitorPowerSupply.c
+SOURCEFILES=main.c app.c monitorPowerSupply.c comm.c
 
 
 
@@ -107,6 +107,12 @@ ${OBJECTDIR}/monitorPowerSupply.o: monitorPowerSupply.c  .generated_files/flags/
 	@${RM} ${OBJECTDIR}/monitorPowerSupply.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  monitorPowerSupply.c  -o ${OBJECTDIR}/monitorPowerSupply.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/monitorPowerSupply.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK4=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -msmall-data -O0 -I"mcc_generated_files" -I"sensirion" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
+${OBJECTDIR}/comm.o: comm.c  .generated_files/flags/default/68ea29ac0c697e2f5e6583f16214ca0e3096944d .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/comm.o.d 
+	@${RM} ${OBJECTDIR}/comm.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  comm.c  -o ${OBJECTDIR}/comm.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/comm.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK4=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -msmall-data -O0 -I"mcc_generated_files" -I"sensirion" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 else
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/959300a19ac640e4f2f608dd43b5267f633cdd1c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
@@ -125,6 +131,12 @@ ${OBJECTDIR}/monitorPowerSupply.o: monitorPowerSupply.c  .generated_files/flags/
 	@${RM} ${OBJECTDIR}/monitorPowerSupply.o.d 
 	@${RM} ${OBJECTDIR}/monitorPowerSupply.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  monitorPowerSupply.c  -o ${OBJECTDIR}/monitorPowerSupply.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/monitorPowerSupply.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -msmall-data -O0 -I"mcc_generated_files" -I"sensirion" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/comm.o: comm.c  .generated_files/flags/default/716bc96f678de2ec25d4e0a38c71627acfcbaf10 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/comm.o.d 
+	@${RM} ${OBJECTDIR}/comm.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  comm.c  -o ${OBJECTDIR}/comm.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/comm.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -msmall-data -O0 -I"mcc_generated_files" -I"sensirion" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 

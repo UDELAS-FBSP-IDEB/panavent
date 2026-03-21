@@ -345,11 +345,13 @@ void Mezclador_setCalibracion(uint8_t index, float M, float B) {
 
 
 void Mezclador_setPWMAire(float porcentaje) {
+    testIndex = 1;
     Mezclador_setPWM(&vAire, porcentaje);
 };
 
 void Mezclador_setPWMOxigeno(float porcentaje){
-     Mezclador_setPWM(&vOxi, porcentaje);
+    testIndex = 0;
+    Mezclador_setPWM(&vOxi, porcentaje);
 };
 
 void Mezclador_setPWM(Valvula * valvula, float porcentaje){
