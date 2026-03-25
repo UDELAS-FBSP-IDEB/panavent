@@ -8,7 +8,6 @@
       <itemPath>app.h</itemPath>
       <itemPath>monitorPowerSupply.h</itemPath>
       <itemPath>comun.h</itemPath>
-      <itemPath>comandos.h</itemPath>
       <itemPath>comm.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"

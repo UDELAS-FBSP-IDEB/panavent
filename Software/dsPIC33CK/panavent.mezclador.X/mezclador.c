@@ -355,6 +355,7 @@ void Mezclador_setPWMOxigeno(float porcentaje){
 };
 
 void Mezclador_setPWM(Valvula * valvula, float porcentaje){
+    dispararConversion = true;
     enManualPWM = true;
     if (porcentaje < 0.0f) porcentaje = 0.0f;
     if (porcentaje > 1.0f) porcentaje = 1.0f;

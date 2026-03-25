@@ -2,6 +2,8 @@
 using panavent.app.core.comandos;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -84,27 +86,100 @@ namespace panavent.app.monitor
 
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            
-            
+
             if (run)
             {
-                
-                ConstantesPID pid = new ConstantesPID(
-                index, Kp,
-                Ki,
-                Kd,
-                max,
-                min,
-                Alpha);
+                run = false;
 
-                myTimer.Enabled = false;
-                pid.TestTarget = target;
-                bridge.EnqueuePacket(pid);
-                Thread.Sleep(3000);
-                pid.TestTarget = 0;
-                bridge.EnqueuePacket(pid);
-                myTimer.Enabled = true;
-                
+                var bridge = Bridge.GetSerialInterface();
+                var sw = Stopwatch.StartNew();
+
+                string filePath = Path.Combine(
+       Windows.Storage.ApplicationData.Current.LocalFolder.Path,
+       $"pwm_test_{DateTime.Now:yyyyMMdd_HHmmss}.csv");
+
+                int currentPwmPct = 0;
+
+                var writer = new StreamWriter(filePath, false);
+                writer.WriteLine("tipo,tiempo_ms,pwm_pct,flujo");
+
+                EventHandler<VentilacionDataCommandEventArgs> handler = (sender, c) =>
+                {
+                    Debug.WriteLine(
+                        $"DATA, {sw.ElapsedMilliseconds}," +
+                        $"{currentPwmPct}," +
+                        $"{c.Data.Flujo.ToString(CultureInfo.InvariantCulture)}");
+
+                    writer.WriteLine(
+                        $"DATA," +
+                        $"{sw.ElapsedMilliseconds}," +
+                        $"{currentPwmPct}," +
+                        $"{c.Data.Flujo.ToString(CultureInfo.InvariantCulture)}");
+                };
+
+                try
+                {
+                    bridge.VentilacionDataCommandReceived += handler;
+
+                    Thread.Sleep(50);
+
+                    // Inicio
+                    bridge.EnqueuePacket(new Instruccion(0x05));
+                    writer.WriteLine($"CMD,{sw.ElapsedMilliseconds},START,");
+                    Thread.Sleep(100);
+
+                    // 0 → i → 0
+                    for (int pct = 1; pct <= 100; pct++)
+                    {
+                        currentPwmPct = 0;
+                        bridge.EnqueuePacket(new SetPWM(0, 0f));
+                        writer.WriteLine($"CMD,{sw.ElapsedMilliseconds},0,");
+                        Thread.Sleep(2000);
+
+                        currentPwmPct = pct;
+                        bridge.EnqueuePacket(new SetPWM(0, pct / 100f));
+                        writer.WriteLine($"CMD,{sw.ElapsedMilliseconds},{pct},");
+                        Thread.Sleep(2000);
+                    }
+
+                    // Ascendente 5%
+                    currentPwmPct = 0;
+                    bridge.EnqueuePacket(new SetPWM(0, 0f));
+                    writer.WriteLine($"CMD,{sw.ElapsedMilliseconds},0,");
+                    Thread.Sleep(2000);
+
+                    for (int pct = 5; pct <= 100; pct += 5)
+                    {
+                        currentPwmPct = pct;
+                        bridge.EnqueuePacket(new SetPWM(0, pct / 100f));
+                        writer.WriteLine($"CMD,{sw.ElapsedMilliseconds},{pct},");
+                        Thread.Sleep(2000);
+                    }
+
+                    // Descendente 5%
+                    for (int pct = 100; pct >= 0; pct -= 5)
+                    {
+                        currentPwmPct = pct;
+                        bridge.EnqueuePacket(new SetPWM(0, pct / 100f));
+                        writer.WriteLine($"CMD,{sw.ElapsedMilliseconds},{pct},");
+                        Thread.Sleep(2000);
+                    }
+
+                    // Final
+                    currentPwmPct = 0;
+                    bridge.EnqueuePacket(new SetPWM(0, 0f));
+                    writer.WriteLine($"CMD,{sw.ElapsedMilliseconds},0,");
+                    writer.WriteLine($"CMD,{sw.ElapsedMilliseconds},END,");
+                    Thread.Sleep(500);
+                }
+                finally
+                {
+                    bridge.VentilacionDataCommandReceived -= handler;
+                    writer.Flush();
+                    writer.Close();
+                }
+
+                Debug.WriteLine($"Archivo guardado en: {filePath}");
             }
 
         }
@@ -320,19 +395,12 @@ namespace panavent.app.monitor
 
         }
 
+       
         private void btnPWMAire_Click(object sender, RoutedEventArgs e)
         {
-            var bridge = Bridge.GetSerialInterface();
-            run = false;
-            Thread.Sleep(10);
-            Instruccion instruccion = new Instruccion(0x05);
-            bridge.EnqueuePacket(instruccion);
-            Thread.Sleep(10);
-
-            Single pwm = float.Parse(txPWM.Text)/100; 
-            SetPWM setPWM = new SetPWM(0, pwm);
-            bridge.EnqueuePacket(setPWM);
-             
+            run = true;
         }
+
+      
     }
 }

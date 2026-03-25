@@ -211,12 +211,12 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200              0x1aa0          0x27f0  (10224)
 .const                      0x1ca0                0xca           0x12f  (303)
-.text                       0x1d6a              0x2e40          0x4560  (17760)
-.dinit                      0x4baa               0x244           0x366  (870)
-.text                       0x4dee               0xcea          0x135f  (4959)
-.init.delay32               0x5ad8                0x1c            0x2a  (42)
+.text                       0x1d6a              0x2e44          0x4566  (17766)
+.dinit                      0x4bae               0x244           0x366  (870)
+.text                       0x4df2               0xcea          0x135f  (4959)
+.init.delay32               0x5adc                0x1c            0x2a  (42)
 
-                 Total "program" memory used (bytes):         0x856e  (34158) 95%
+                 Total "program" memory used (bytes):         0x8574  (34164) 95%
 
 
 "data" Memory  [Origin = 0x1000, Length = 0x2000]
@@ -512,223 +512,223 @@ External Symbols in Program Memory (by address):
                   0x002bde                  _Mezclador_setPWMAire
                   0x002bf0                  _Mezclador_setPWMOxigeno
                   0x002c00                  _Mezclador_setPWM
-                  0x002c6a                  _Mezclador_startManualPWM
-                  0x002c74                  _Mezclador_stopManualPWM
-                  0x002f22                  _I2C1_Initialize
-                  0x002f5c                  _I2C1_TimeOutTimerCallBack
-                  0x002f68                  _I2C1_i2cCallBackhandler
-                  0x002f88                  _I2C1_BusRecovery
-                  0x002fae                  _I2C1_Deinitialize
-                  0x002fc6                  _I2C1_Write
-                  0x003028                  _I2C1_Read
-                  0x00308c                  _I2C1_WriteRead
-                  0x003108                  _I2C1_TransferSetup
-                  0x0031c2                  _I2C1_ErrorGetNoReset
-                  0x0031ce                  _I2C1_ErrorSet
-                  0x0031da                  _I2C1_ErrorGet
-                  0x0031ea                  _I2C1_IsBusy
-                  0x00324c                  _I2C1_CallbackRegister
-                  0x003264                  _Comm_inicializar
-                  0x00327e                  build/default/production/comm.o:_Comm_TimeOutTimerCallBack
-                  0x00328a                  _Comm_getCommands
-                  0x003298                  _Comm_sendCommandAndWaitWithArgs
-                  0x0032f0                  _Comm_SendCommandAndWait
-                  0x003344                  _Comm_sendCommandWithArgs
-                  0x00344a                  _Comm_getCommand
-                  0x0037f4                  _App_inicializar
-                  0x003800                  _App_sendData
-                  0x00381c                  _App_sendVentilacionData
-                  0x0038f6                  _App_sendError
-                  0x003912                  build/default/production/app.o:_App_CommOnCommandReceived
-                  0x003d1c                  _SFM4200_Inicializar
-                  0x003e62                  _SFM4200_Deinicializar
-                  0x003e74                  _SFM4200_SetModo
-                  0x003ebe                  _SFM4200_LeerFlujo
-                  0x003f28                  _SFM4200_Write
-                  0x003f64                  _SFM4200_Read
-                  0x003fd6                  _SFM4200_GetParametro
-                  0x00408e                  _SFM4200_ValidarCheckSum
-                  0x0040b8                  _SFM4200_GenerarCheckSum
-                  0x004124                  _SfmAire_Inicializar
-                  0x004144                  _SfmOxi_Inicializar
-                  0x004164                  _SfmProxi_Inicializar
-                  0x004184                  _SfmAire_LeerFlujo
-                  0x0041a4                  _SfmOxi_LeerFlujo
-                  0x0041c4                  _SfmProxi_LeerFlujo
-                  0x0041ee                  _UnpackFloat
-                  0x00425a                  _PackFloat
-                  0x0042a4                  _GenerarCheckSum
-                  0x00431a                  _ValidarCheckSum
-                  0x004348                  _init_filter
-                  0x0043ac                  _filter_new_sample
-                  0x0044b4                  _initLowPassFilter
-                  0x004520                  _processLowPassFilter
-                  0x004594                  adc1.o:_ADC1_Enable
-                  0x00459c                  adc1.o:_ADC1_Disable
-                  0x0045a4                  adc1.o:_ADC1_SoftwareTriggerEnable
-                  0x0045ac                  adc1.o:_ADC1_SoftwareTriggerDisable
-                  0x0045b4                  adc1.o:_ADC1_ChannelSelect
-                  0x0045bc                  adc1.o:_ADC1_ConversionResultGet
-                  0x0045ec                  adc1.o:_ADC1_IsConversionComplete
-                  0x004646                  adc1.o:_ADC1_InterruptEnable
-                  0x00464e                  adc1.o:_ADC1_InterruptDisable
-                  0x004656                  adc1.o:_ADC1_InterruptFlagClear
-                  0x00465e                  adc1.o:_ADC1_InterruptPrioritySet
-                  0x004680                  adc1.o:_ADC1_IndividualChannelInterruptEnable
-                  0x0046a4                  adc1.o:_ADC1_IndividualChannelInterruptDisable
-                  0x0046c8                  adc1.o:_ADC1_IndividualChannelInterruptFlagClear
-                  0x0046ec                  _ADC1_Initialize
-                  0x0047ae                  _ADC1_Deinitialize
-                  0x00485c                  _ADC1_SharedCorePowerEnable
-                  0x004872                  _ADC1_CommonCallbackRegister
-                  0x0048a0                  _ADC1_ChannelCallbackRegister
-                  0x0048be                  _ADC1_ComparatorCallbackRegister
-                  0x0048d8                  _PID_inicializar
-                  0x0048f8                  _PID_desinicializar
-                  0x00490c                  _PID_timerCallBack
-                  0x004920                  _PID_resetDeltaTime
-                  0x00493c                  _PID_calcular
-                  0x004dee                  _Timer1Controller_quitarCallback
-                  0x004e2e                  _Timer1Controller_agregarCallback
-                  0x004e8e                  _Timer1Controller_quitarCallbacks
-                  0x004eb0                  _Timer1Controller_inicializar
-                  0x004ed2                  _Timer1Controller_desinicializar
-                  0x004ee8                  _Timer1Controller_timerCallBack
-                  0x004f82                  _Timer3Controller_quitarCallback
-                  0x004fc2                  _Timer3Controller_agregarCallback
-                  0x005022                  _Timer3Controller_quitarCallbacks
-                  0x005044                  _Timer3Controller_iniciar
-                  0x00505e                  _Timer3Controller_detener
-                  0x005074                  _Timer3Controller_timerCallBack
-                  0x00510e                  _Mcp342x_dispararConvercion
-                  0x0051a6                  _Mcp342x_leerConversion
-                  0x00524e                  _PCA9543APW_setCanal
-                  0x0052da                  _PCA9543APW_getCanal
-                  0x00532e                  _PCA9543APW_disable
-                  0x00537e                  _DMT_Initialize
-                  0x005390                  _DMT_Enable
-                  0x00539a                  _DMT_PreClear
-                  0x0053a8                  _DMT_Clear
-                  0x0053be                  _DMT_IsWindowOpen
-                  0x0053d8                  _DMT_IsPreCleared
-                  0x0053e0                  _DMT_TimeoutCounterGet
-                  0x0053fe                  _DMT_WindowTimeoutCounterGet
-                  0x00541c                  _DMT_StatusGet
-                  0x00542e                  _DMT_CounterGet
-                  0x00544c                  _DMT_EventCallbackRegister
-                  0x005464                  _MonitorPowerSupply_AccionarValvulaSeguridad
-                  0x0054c4                  _MonitorPowerSupply_GetInfoCarga
-                  0x00553a                  _INTERRUPT_Initialize
-                  0x005598                  _INTERRUPT_Deinitialize
-                  0x0055f8                  _SCCP1_PWM_Initialize
-                  0x005626                  _SCCP1_PWM_Deinitialize
-                  0x005650                  _SCCP1_PWM_Enable
-                  0x005658                  _SCCP1_PWM_Disable
-                  0x005660                  _SCCP1_PWM_PeriodSet
-                  0x00566c                  _SCCP1_PWM_DutyCycleSet
-                  0x005678                  _SCCP1_PWM_SoftwareTriggerSet
-                  0x005680                  _SCCP1_PWM_CallbackRegister
-                  0x005698                  _SCCP1_PWM_Tasks
-                  0x0056ae                  _SCCP4_PWM_Initialize
-                  0x0056dc                  _SCCP4_PWM_Deinitialize
-                  0x005706                  _SCCP4_PWM_Enable
-                  0x00570e                  _SCCP4_PWM_Disable
-                  0x005716                  _SCCP4_PWM_PeriodSet
-                  0x005722                  _SCCP4_PWM_DutyCycleSet
-                  0x00572e                  _SCCP4_PWM_SoftwareTriggerSet
-                  0x005736                  _SCCP4_PWM_CallbackRegister
-                  0x00574e                  _SCCP4_PWM_Tasks
-                  0x005764                  _SCCP2_PWM_Initialize
-                  0x005792                  _SCCP2_PWM_Deinitialize
-                  0x0057bc                  _SCCP2_PWM_Enable
-                  0x0057c4                  _SCCP2_PWM_Disable
-                  0x0057cc                  _SCCP2_PWM_PeriodSet
-                  0x0057d8                  _SCCP2_PWM_DutyCycleSet
-                  0x0057e4                  _SCCP2_PWM_SoftwareTriggerSet
-                  0x0057ec                  _SCCP2_PWM_CallbackRegister
-                  0x005804                  _SCCP2_PWM_Tasks
-                  0x00581a                  _SCCP3_Timer_Initialize
-                  0x005846                  _SCCP3_Timer_Deinitialize
-                  0x005874                  _SCCP3_Timer_Start
-                  0x005880                  _SCCP3_Timer_Stop
-                  0x00588c                  _SCCP3_Timer_PeriodCountSet
-                  0x005898                  _SCCP3_TimeoutCallbackRegister
-                  0x0058b0                  _ValvulaExpiratoria_inicializar
-                  0x0058c4                  _ValvulaExpiratoria_abrir
-                  0x0058d0                  _ValvulaExpiratoria_cerrar
-                  0x0058dc                  _ValvulaExpiratoria_controlPeep
-                  0x005908                  _ValvulaExpiratoria_setConstantesPID
-                  0x005918                  _CLOCK_Initialize
-                  0x00597c                  _PINS_Initialize
-                  0x0059de                  _TMR1_Initialize
-                  0x0059f0                  _TMR1_Deinitialize
-                  0x0059fe                  _TMR1_Start
-                  0x005a0a                  _TMR1_Stop
-                  0x005a14                  _TMR1_PeriodCountSet
-                  0x005a20                  _TMR1_TimeoutCallbackRegister
-                  0x005a38                  _McpMezclador_dispararConvercion
-                  0x005a58                  _McpMezclador_leerConversion
-                  0x005a80                  _DMT_CalibratedCounterGet
-                  0x005a92                  _DMT_Calibrate
-                  0x005aba                  _SYSTEM_Initialize
-                  0x005ad8                  ___delay32
+                  0x002c6e                  _Mezclador_startManualPWM
+                  0x002c78                  _Mezclador_stopManualPWM
+                  0x002f26                  _I2C1_Initialize
+                  0x002f60                  _I2C1_TimeOutTimerCallBack
+                  0x002f6c                  _I2C1_i2cCallBackhandler
+                  0x002f8c                  _I2C1_BusRecovery
+                  0x002fb2                  _I2C1_Deinitialize
+                  0x002fca                  _I2C1_Write
+                  0x00302c                  _I2C1_Read
+                  0x003090                  _I2C1_WriteRead
+                  0x00310c                  _I2C1_TransferSetup
+                  0x0031c6                  _I2C1_ErrorGetNoReset
+                  0x0031d2                  _I2C1_ErrorSet
+                  0x0031de                  _I2C1_ErrorGet
+                  0x0031ee                  _I2C1_IsBusy
+                  0x003250                  _I2C1_CallbackRegister
+                  0x003268                  _Comm_inicializar
+                  0x003282                  build/default/production/comm.o:_Comm_TimeOutTimerCallBack
+                  0x00328e                  _Comm_getCommands
+                  0x00329c                  _Comm_sendCommandAndWaitWithArgs
+                  0x0032f4                  _Comm_SendCommandAndWait
+                  0x003348                  _Comm_sendCommandWithArgs
+                  0x00344e                  _Comm_getCommand
+                  0x0037f8                  _App_inicializar
+                  0x003804                  _App_sendData
+                  0x003820                  _App_sendVentilacionData
+                  0x0038fa                  _App_sendError
+                  0x003916                  build/default/production/app.o:_App_CommOnCommandReceived
+                  0x003d20                  _SFM4200_Inicializar
+                  0x003e66                  _SFM4200_Deinicializar
+                  0x003e78                  _SFM4200_SetModo
+                  0x003ec2                  _SFM4200_LeerFlujo
+                  0x003f2c                  _SFM4200_Write
+                  0x003f68                  _SFM4200_Read
+                  0x003fda                  _SFM4200_GetParametro
+                  0x004092                  _SFM4200_ValidarCheckSum
+                  0x0040bc                  _SFM4200_GenerarCheckSum
+                  0x004128                  _SfmAire_Inicializar
+                  0x004148                  _SfmOxi_Inicializar
+                  0x004168                  _SfmProxi_Inicializar
+                  0x004188                  _SfmAire_LeerFlujo
+                  0x0041a8                  _SfmOxi_LeerFlujo
+                  0x0041c8                  _SfmProxi_LeerFlujo
+                  0x0041f2                  _UnpackFloat
+                  0x00425e                  _PackFloat
+                  0x0042a8                  _GenerarCheckSum
+                  0x00431e                  _ValidarCheckSum
+                  0x00434c                  _init_filter
+                  0x0043b0                  _filter_new_sample
+                  0x0044b8                  _initLowPassFilter
+                  0x004524                  _processLowPassFilter
+                  0x004598                  adc1.o:_ADC1_Enable
+                  0x0045a0                  adc1.o:_ADC1_Disable
+                  0x0045a8                  adc1.o:_ADC1_SoftwareTriggerEnable
+                  0x0045b0                  adc1.o:_ADC1_SoftwareTriggerDisable
+                  0x0045b8                  adc1.o:_ADC1_ChannelSelect
+                  0x0045c0                  adc1.o:_ADC1_ConversionResultGet
+                  0x0045f0                  adc1.o:_ADC1_IsConversionComplete
+                  0x00464a                  adc1.o:_ADC1_InterruptEnable
+                  0x004652                  adc1.o:_ADC1_InterruptDisable
+                  0x00465a                  adc1.o:_ADC1_InterruptFlagClear
+                  0x004662                  adc1.o:_ADC1_InterruptPrioritySet
+                  0x004684                  adc1.o:_ADC1_IndividualChannelInterruptEnable
+                  0x0046a8                  adc1.o:_ADC1_IndividualChannelInterruptDisable
+                  0x0046cc                  adc1.o:_ADC1_IndividualChannelInterruptFlagClear
+                  0x0046f0                  _ADC1_Initialize
+                  0x0047b2                  _ADC1_Deinitialize
+                  0x004860                  _ADC1_SharedCorePowerEnable
+                  0x004876                  _ADC1_CommonCallbackRegister
+                  0x0048a4                  _ADC1_ChannelCallbackRegister
+                  0x0048c2                  _ADC1_ComparatorCallbackRegister
+                  0x0048dc                  _PID_inicializar
+                  0x0048fc                  _PID_desinicializar
+                  0x004910                  _PID_timerCallBack
+                  0x004924                  _PID_resetDeltaTime
+                  0x004940                  _PID_calcular
+                  0x004df2                  _Timer1Controller_quitarCallback
+                  0x004e32                  _Timer1Controller_agregarCallback
+                  0x004e92                  _Timer1Controller_quitarCallbacks
+                  0x004eb4                  _Timer1Controller_inicializar
+                  0x004ed6                  _Timer1Controller_desinicializar
+                  0x004eec                  _Timer1Controller_timerCallBack
+                  0x004f86                  _Timer3Controller_quitarCallback
+                  0x004fc6                  _Timer3Controller_agregarCallback
+                  0x005026                  _Timer3Controller_quitarCallbacks
+                  0x005048                  _Timer3Controller_iniciar
+                  0x005062                  _Timer3Controller_detener
+                  0x005078                  _Timer3Controller_timerCallBack
+                  0x005112                  _Mcp342x_dispararConvercion
+                  0x0051aa                  _Mcp342x_leerConversion
+                  0x005252                  _PCA9543APW_setCanal
+                  0x0052de                  _PCA9543APW_getCanal
+                  0x005332                  _PCA9543APW_disable
+                  0x005382                  _DMT_Initialize
+                  0x005394                  _DMT_Enable
+                  0x00539e                  _DMT_PreClear
+                  0x0053ac                  _DMT_Clear
+                  0x0053c2                  _DMT_IsWindowOpen
+                  0x0053dc                  _DMT_IsPreCleared
+                  0x0053e4                  _DMT_TimeoutCounterGet
+                  0x005402                  _DMT_WindowTimeoutCounterGet
+                  0x005420                  _DMT_StatusGet
+                  0x005432                  _DMT_CounterGet
+                  0x005450                  _DMT_EventCallbackRegister
+                  0x005468                  _MonitorPowerSupply_AccionarValvulaSeguridad
+                  0x0054c8                  _MonitorPowerSupply_GetInfoCarga
+                  0x00553e                  _INTERRUPT_Initialize
+                  0x00559c                  _INTERRUPT_Deinitialize
+                  0x0055fc                  _SCCP1_PWM_Initialize
+                  0x00562a                  _SCCP1_PWM_Deinitialize
+                  0x005654                  _SCCP1_PWM_Enable
+                  0x00565c                  _SCCP1_PWM_Disable
+                  0x005664                  _SCCP1_PWM_PeriodSet
+                  0x005670                  _SCCP1_PWM_DutyCycleSet
+                  0x00567c                  _SCCP1_PWM_SoftwareTriggerSet
+                  0x005684                  _SCCP1_PWM_CallbackRegister
+                  0x00569c                  _SCCP1_PWM_Tasks
+                  0x0056b2                  _SCCP4_PWM_Initialize
+                  0x0056e0                  _SCCP4_PWM_Deinitialize
+                  0x00570a                  _SCCP4_PWM_Enable
+                  0x005712                  _SCCP4_PWM_Disable
+                  0x00571a                  _SCCP4_PWM_PeriodSet
+                  0x005726                  _SCCP4_PWM_DutyCycleSet
+                  0x005732                  _SCCP4_PWM_SoftwareTriggerSet
+                  0x00573a                  _SCCP4_PWM_CallbackRegister
+                  0x005752                  _SCCP4_PWM_Tasks
+                  0x005768                  _SCCP2_PWM_Initialize
+                  0x005796                  _SCCP2_PWM_Deinitialize
+                  0x0057c0                  _SCCP2_PWM_Enable
+                  0x0057c8                  _SCCP2_PWM_Disable
+                  0x0057d0                  _SCCP2_PWM_PeriodSet
+                  0x0057dc                  _SCCP2_PWM_DutyCycleSet
+                  0x0057e8                  _SCCP2_PWM_SoftwareTriggerSet
+                  0x0057f0                  _SCCP2_PWM_CallbackRegister
+                  0x005808                  _SCCP2_PWM_Tasks
+                  0x00581e                  _SCCP3_Timer_Initialize
+                  0x00584a                  _SCCP3_Timer_Deinitialize
+                  0x005878                  _SCCP3_Timer_Start
+                  0x005884                  _SCCP3_Timer_Stop
+                  0x005890                  _SCCP3_Timer_PeriodCountSet
+                  0x00589c                  _SCCP3_TimeoutCallbackRegister
+                  0x0058b4                  _ValvulaExpiratoria_inicializar
+                  0x0058c8                  _ValvulaExpiratoria_abrir
+                  0x0058d4                  _ValvulaExpiratoria_cerrar
+                  0x0058e0                  _ValvulaExpiratoria_controlPeep
+                  0x00590c                  _ValvulaExpiratoria_setConstantesPID
+                  0x00591c                  _CLOCK_Initialize
+                  0x005980                  _PINS_Initialize
+                  0x0059e2                  _TMR1_Initialize
+                  0x0059f4                  _TMR1_Deinitialize
+                  0x005a02                  _TMR1_Start
+                  0x005a0e                  _TMR1_Stop
+                  0x005a18                  _TMR1_PeriodCountSet
+                  0x005a24                  _TMR1_TimeoutCallbackRegister
+                  0x005a3c                  _McpMezclador_dispararConvercion
+                  0x005a5c                  _McpMezclador_leerConversion
+                  0x005a84                  _DMT_CalibratedCounterGet
+                  0x005a96                  _DMT_Calibrate
+                  0x005abe                  _SYSTEM_Initialize
+                  0x005adc                  ___delay32
                   0x005f00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
                   0x001cb2                  _ADC1
-                  0x0048a0                  _ADC1_ChannelCallbackRegister
-                  0x004872                  _ADC1_CommonCallbackRegister
-                  0x0048be                  _ADC1_ComparatorCallbackRegister
-                  0x0047ae                  _ADC1_Deinitialize
-                  0x0046ec                  _ADC1_Initialize
-                  0x00485c                  _ADC1_SharedCorePowerEnable
-                  0x0037f4                  _App_inicializar
-                  0x003800                  _App_sendData
-                  0x0038f6                  _App_sendError
-                  0x00381c                  _App_sendVentilacionData
-                  0x005918                  _CLOCK_Initialize
-                  0x0032f0                  _Comm_SendCommandAndWait
-                  0x00344a                  _Comm_getCommand
-                  0x00328a                  _Comm_getCommands
-                  0x003264                  _Comm_inicializar
-                  0x003298                  _Comm_sendCommandAndWaitWithArgs
-                  0x003344                  _Comm_sendCommandWithArgs
-                  0x005a92                  _DMT_Calibrate
-                  0x005a80                  _DMT_CalibratedCounterGet
-                  0x0053a8                  _DMT_Clear
-                  0x00542e                  _DMT_CounterGet
-                  0x005390                  _DMT_Enable
-                  0x00544c                  _DMT_EventCallbackRegister
-                  0x00537e                  _DMT_Initialize
-                  0x0053d8                  _DMT_IsPreCleared
-                  0x0053be                  _DMT_IsWindowOpen
-                  0x00539a                  _DMT_PreClear
-                  0x00541c                  _DMT_StatusGet
-                  0x0053e0                  _DMT_TimeoutCounterGet
-                  0x0053fe                  _DMT_WindowTimeoutCounterGet
-                  0x0042a4                  _GenerarCheckSum
-                  0x002f88                  _I2C1_BusRecovery
-                  0x00324c                  _I2C1_CallbackRegister
-                  0x002fae                  _I2C1_Deinitialize
-                  0x0031da                  _I2C1_ErrorGet
-                  0x0031c2                  _I2C1_ErrorGetNoReset
-                  0x0031ce                  _I2C1_ErrorSet
-                  0x002f22                  _I2C1_Initialize
-                  0x0031ea                  _I2C1_IsBusy
-                  0x003028                  _I2C1_Read
-                  0x002f5c                  _I2C1_TimeOutTimerCallBack
-                  0x003108                  _I2C1_TransferSetup
-                  0x002fc6                  _I2C1_Write
-                  0x00308c                  _I2C1_WriteRead
-                  0x002f68                  _I2C1_i2cCallBackhandler
+                  0x0048a4                  _ADC1_ChannelCallbackRegister
+                  0x004876                  _ADC1_CommonCallbackRegister
+                  0x0048c2                  _ADC1_ComparatorCallbackRegister
+                  0x0047b2                  _ADC1_Deinitialize
+                  0x0046f0                  _ADC1_Initialize
+                  0x004860                  _ADC1_SharedCorePowerEnable
+                  0x0037f8                  _App_inicializar
+                  0x003804                  _App_sendData
+                  0x0038fa                  _App_sendError
+                  0x003820                  _App_sendVentilacionData
+                  0x00591c                  _CLOCK_Initialize
+                  0x0032f4                  _Comm_SendCommandAndWait
+                  0x00344e                  _Comm_getCommand
+                  0x00328e                  _Comm_getCommands
+                  0x003268                  _Comm_inicializar
+                  0x00329c                  _Comm_sendCommandAndWaitWithArgs
+                  0x003348                  _Comm_sendCommandWithArgs
+                  0x005a96                  _DMT_Calibrate
+                  0x005a84                  _DMT_CalibratedCounterGet
+                  0x0053ac                  _DMT_Clear
+                  0x005432                  _DMT_CounterGet
+                  0x005394                  _DMT_Enable
+                  0x005450                  _DMT_EventCallbackRegister
+                  0x005382                  _DMT_Initialize
+                  0x0053dc                  _DMT_IsPreCleared
+                  0x0053c2                  _DMT_IsWindowOpen
+                  0x00539e                  _DMT_PreClear
+                  0x005420                  _DMT_StatusGet
+                  0x0053e4                  _DMT_TimeoutCounterGet
+                  0x005402                  _DMT_WindowTimeoutCounterGet
+                  0x0042a8                  _GenerarCheckSum
+                  0x002f8c                  _I2C1_BusRecovery
+                  0x003250                  _I2C1_CallbackRegister
+                  0x002fb2                  _I2C1_Deinitialize
+                  0x0031de                  _I2C1_ErrorGet
+                  0x0031c6                  _I2C1_ErrorGetNoReset
+                  0x0031d2                  _I2C1_ErrorSet
+                  0x002f26                  _I2C1_Initialize
+                  0x0031ee                  _I2C1_IsBusy
+                  0x00302c                  _I2C1_Read
+                  0x002f60                  _I2C1_TimeOutTimerCallBack
+                  0x00310c                  _I2C1_TransferSetup
+                  0x002fca                  _I2C1_Write
+                  0x003090                  _I2C1_WriteRead
+                  0x002f6c                  _I2C1_i2cCallBackhandler
                   0x001d14                  _I2CMaster
-                  0x005598                  _INTERRUPT_Deinitialize
-                  0x00553a                  _INTERRUPT_Initialize
-                  0x00510e                  _Mcp342x_dispararConvercion
-                  0x0051a6                  _Mcp342x_leerConversion
-                  0x005a38                  _McpMezclador_dispararConvercion
-                  0x005a58                  _McpMezclador_leerConversion
+                  0x00559c                  _INTERRUPT_Deinitialize
+                  0x00553e                  _INTERRUPT_Initialize
+                  0x005112                  _Mcp342x_dispararConvercion
+                  0x0051aa                  _Mcp342x_leerConversion
+                  0x005a3c                  _McpMezclador_dispararConvercion
+                  0x005a5c                  _McpMezclador_leerConversion
                   0x002704                  _Mezclador_conversionCallBack
                   0x002592                  _Mezclador_inicializar
                   0x00283a                  _Mezclador_leerPresiones
@@ -741,100 +741,100 @@ External Symbols in Program Memory (by name):
                   0x002c00                  _Mezclador_setPWM
                   0x002bde                  _Mezclador_setPWMAire
                   0x002bf0                  _Mezclador_setPWMOxigeno
-                  0x002c6a                  _Mezclador_startManualPWM
-                  0x002c74                  _Mezclador_stopManualPWM
+                  0x002c6e                  _Mezclador_startManualPWM
+                  0x002c78                  _Mezclador_stopManualPWM
                   0x00269a                  _Mezclador_timerCallBack
-                  0x005464                  _MonitorPowerSupply_AccionarValvulaSeguridad
-                  0x0054c4                  _MonitorPowerSupply_GetInfoCarga
-                  0x00532e                  _PCA9543APW_disable
-                  0x0052da                  _PCA9543APW_getCanal
-                  0x00524e                  _PCA9543APW_setCanal
-                  0x00493c                  _PID_calcular
-                  0x0048f8                  _PID_desinicializar
-                  0x0048d8                  _PID_inicializar
-                  0x004920                  _PID_resetDeltaTime
-                  0x00490c                  _PID_timerCallBack
-                  0x00597c                  _PINS_Initialize
+                  0x005468                  _MonitorPowerSupply_AccionarValvulaSeguridad
+                  0x0054c8                  _MonitorPowerSupply_GetInfoCarga
+                  0x005332                  _PCA9543APW_disable
+                  0x0052de                  _PCA9543APW_getCanal
+                  0x005252                  _PCA9543APW_setCanal
+                  0x004940                  _PID_calcular
+                  0x0048fc                  _PID_desinicializar
+                  0x0048dc                  _PID_inicializar
+                  0x004924                  _PID_resetDeltaTime
+                  0x004910                  _PID_timerCallBack
+                  0x005980                  _PINS_Initialize
                   0x001cd2                  _PWM1
                   0x001cfe                  _PWM2
                   0x001ce8                  _PWM4
-                  0x00425a                  _PackFloat
-                  0x005680                  _SCCP1_PWM_CallbackRegister
-                  0x005626                  _SCCP1_PWM_Deinitialize
-                  0x005658                  _SCCP1_PWM_Disable
-                  0x00566c                  _SCCP1_PWM_DutyCycleSet
-                  0x005650                  _SCCP1_PWM_Enable
-                  0x0055f8                  _SCCP1_PWM_Initialize
-                  0x005660                  _SCCP1_PWM_PeriodSet
-                  0x005678                  _SCCP1_PWM_SoftwareTriggerSet
-                  0x005698                  _SCCP1_PWM_Tasks
-                  0x0057ec                  _SCCP2_PWM_CallbackRegister
-                  0x005792                  _SCCP2_PWM_Deinitialize
-                  0x0057c4                  _SCCP2_PWM_Disable
-                  0x0057d8                  _SCCP2_PWM_DutyCycleSet
-                  0x0057bc                  _SCCP2_PWM_Enable
-                  0x005764                  _SCCP2_PWM_Initialize
-                  0x0057cc                  _SCCP2_PWM_PeriodSet
-                  0x0057e4                  _SCCP2_PWM_SoftwareTriggerSet
-                  0x005804                  _SCCP2_PWM_Tasks
-                  0x005898                  _SCCP3_TimeoutCallbackRegister
-                  0x005846                  _SCCP3_Timer_Deinitialize
-                  0x00581a                  _SCCP3_Timer_Initialize
-                  0x00588c                  _SCCP3_Timer_PeriodCountSet
-                  0x005874                  _SCCP3_Timer_Start
-                  0x005880                  _SCCP3_Timer_Stop
-                  0x005736                  _SCCP4_PWM_CallbackRegister
-                  0x0056dc                  _SCCP4_PWM_Deinitialize
-                  0x00570e                  _SCCP4_PWM_Disable
-                  0x005722                  _SCCP4_PWM_DutyCycleSet
-                  0x005706                  _SCCP4_PWM_Enable
-                  0x0056ae                  _SCCP4_PWM_Initialize
-                  0x005716                  _SCCP4_PWM_PeriodSet
-                  0x00572e                  _SCCP4_PWM_SoftwareTriggerSet
-                  0x00574e                  _SCCP4_PWM_Tasks
-                  0x003e62                  _SFM4200_Deinicializar
-                  0x0040b8                  _SFM4200_GenerarCheckSum
-                  0x003fd6                  _SFM4200_GetParametro
-                  0x003d1c                  _SFM4200_Inicializar
-                  0x003ebe                  _SFM4200_LeerFlujo
-                  0x003f64                  _SFM4200_Read
-                  0x003e74                  _SFM4200_SetModo
-                  0x00408e                  _SFM4200_ValidarCheckSum
-                  0x003f28                  _SFM4200_Write
-                  0x005aba                  _SYSTEM_Initialize
-                  0x004124                  _SfmAire_Inicializar
-                  0x004184                  _SfmAire_LeerFlujo
-                  0x004144                  _SfmOxi_Inicializar
-                  0x0041a4                  _SfmOxi_LeerFlujo
-                  0x004164                  _SfmProxi_Inicializar
-                  0x0041c4                  _SfmProxi_LeerFlujo
-                  0x0059f0                  _TMR1_Deinitialize
-                  0x0059de                  _TMR1_Initialize
-                  0x005a14                  _TMR1_PeriodCountSet
-                  0x0059fe                  _TMR1_Start
-                  0x005a0a                  _TMR1_Stop
-                  0x005a20                  _TMR1_TimeoutCallbackRegister
+                  0x00425e                  _PackFloat
+                  0x005684                  _SCCP1_PWM_CallbackRegister
+                  0x00562a                  _SCCP1_PWM_Deinitialize
+                  0x00565c                  _SCCP1_PWM_Disable
+                  0x005670                  _SCCP1_PWM_DutyCycleSet
+                  0x005654                  _SCCP1_PWM_Enable
+                  0x0055fc                  _SCCP1_PWM_Initialize
+                  0x005664                  _SCCP1_PWM_PeriodSet
+                  0x00567c                  _SCCP1_PWM_SoftwareTriggerSet
+                  0x00569c                  _SCCP1_PWM_Tasks
+                  0x0057f0                  _SCCP2_PWM_CallbackRegister
+                  0x005796                  _SCCP2_PWM_Deinitialize
+                  0x0057c8                  _SCCP2_PWM_Disable
+                  0x0057dc                  _SCCP2_PWM_DutyCycleSet
+                  0x0057c0                  _SCCP2_PWM_Enable
+                  0x005768                  _SCCP2_PWM_Initialize
+                  0x0057d0                  _SCCP2_PWM_PeriodSet
+                  0x0057e8                  _SCCP2_PWM_SoftwareTriggerSet
+                  0x005808                  _SCCP2_PWM_Tasks
+                  0x00589c                  _SCCP3_TimeoutCallbackRegister
+                  0x00584a                  _SCCP3_Timer_Deinitialize
+                  0x00581e                  _SCCP3_Timer_Initialize
+                  0x005890                  _SCCP3_Timer_PeriodCountSet
+                  0x005878                  _SCCP3_Timer_Start
+                  0x005884                  _SCCP3_Timer_Stop
+                  0x00573a                  _SCCP4_PWM_CallbackRegister
+                  0x0056e0                  _SCCP4_PWM_Deinitialize
+                  0x005712                  _SCCP4_PWM_Disable
+                  0x005726                  _SCCP4_PWM_DutyCycleSet
+                  0x00570a                  _SCCP4_PWM_Enable
+                  0x0056b2                  _SCCP4_PWM_Initialize
+                  0x00571a                  _SCCP4_PWM_PeriodSet
+                  0x005732                  _SCCP4_PWM_SoftwareTriggerSet
+                  0x005752                  _SCCP4_PWM_Tasks
+                  0x003e66                  _SFM4200_Deinicializar
+                  0x0040bc                  _SFM4200_GenerarCheckSum
+                  0x003fda                  _SFM4200_GetParametro
+                  0x003d20                  _SFM4200_Inicializar
+                  0x003ec2                  _SFM4200_LeerFlujo
+                  0x003f68                  _SFM4200_Read
+                  0x003e78                  _SFM4200_SetModo
+                  0x004092                  _SFM4200_ValidarCheckSum
+                  0x003f2c                  _SFM4200_Write
+                  0x005abe                  _SYSTEM_Initialize
+                  0x004128                  _SfmAire_Inicializar
+                  0x004188                  _SfmAire_LeerFlujo
+                  0x004148                  _SfmOxi_Inicializar
+                  0x0041a8                  _SfmOxi_LeerFlujo
+                  0x004168                  _SfmProxi_Inicializar
+                  0x0041c8                  _SfmProxi_LeerFlujo
+                  0x0059f4                  _TMR1_Deinitialize
+                  0x0059e2                  _TMR1_Initialize
+                  0x005a18                  _TMR1_PeriodCountSet
+                  0x005a02                  _TMR1_Start
+                  0x005a0e                  _TMR1_Stop
+                  0x005a24                  _TMR1_TimeoutCallbackRegister
                   0x001d36                  _Timer1
-                  0x004e2e                  _Timer1Controller_agregarCallback
-                  0x004ed2                  _Timer1Controller_desinicializar
-                  0x004eb0                  _Timer1Controller_inicializar
-                  0x004dee                  _Timer1Controller_quitarCallback
-                  0x004e8e                  _Timer1Controller_quitarCallbacks
-                  0x004ee8                  _Timer1Controller_timerCallBack
+                  0x004e32                  _Timer1Controller_agregarCallback
+                  0x004ed6                  _Timer1Controller_desinicializar
+                  0x004eb4                  _Timer1Controller_inicializar
+                  0x004df2                  _Timer1Controller_quitarCallback
+                  0x004e92                  _Timer1Controller_quitarCallbacks
+                  0x004eec                  _Timer1Controller_timerCallBack
                   0x001d28                  _Timer3
-                  0x004fc2                  _Timer3Controller_agregarCallback
-                  0x00505e                  _Timer3Controller_detener
-                  0x005044                  _Timer3Controller_iniciar
-                  0x004f82                  _Timer3Controller_quitarCallback
-                  0x005022                  _Timer3Controller_quitarCallbacks
-                  0x005074                  _Timer3Controller_timerCallBack
-                  0x0041ee                  _UnpackFloat
-                  0x00431a                  _ValidarCheckSum
-                  0x0058c4                  _ValvulaExpiratoria_abrir
-                  0x0058d0                  _ValvulaExpiratoria_cerrar
-                  0x0058dc                  _ValvulaExpiratoria_controlPeep
-                  0x0058b0                  _ValvulaExpiratoria_inicializar
-                  0x005908                  _ValvulaExpiratoria_setConstantesPID
+                  0x004fc6                  _Timer3Controller_agregarCallback
+                  0x005062                  _Timer3Controller_detener
+                  0x005048                  _Timer3Controller_iniciar
+                  0x004f86                  _Timer3Controller_quitarCallback
+                  0x005026                  _Timer3Controller_quitarCallbacks
+                  0x005078                  _Timer3Controller_timerCallBack
+                  0x0041f2                  _UnpackFloat
+                  0x00431e                  _ValidarCheckSum
+                  0x0058c8                  _ValvulaExpiratoria_abrir
+                  0x0058d4                  _ValvulaExpiratoria_cerrar
+                  0x0058e0                  _ValvulaExpiratoria_controlPeep
+                  0x0058b4                  _ValvulaExpiratoria_inicializar
+                  0x00590c                  _ValvulaExpiratoria_setConstantesPID
                   0x0005ba                  __CCT3Interrupt
                   0x0006a2                  __DMTInterrupt
                   0x0006c2                  __DefaultInterrupt
@@ -845,7 +845,7 @@ External Symbols in Program Memory (by name):
                   0x000792                  ___addsf3
                   0x000792                  ___addsf3x
                   0x0012d0                  ___cosdf
-                  0x005ad8                  ___delay32
+                  0x005adc                  ___delay32
                   0x001094                  ___divdi3
                   0x00095c                  ___divsf3
                   0x00095c                  ___divsf3x
@@ -893,35 +893,35 @@ External Symbols in Program Memory (by name):
                   0x000c7a                  __unpackdnrmf
                   0x000dc4                  __unpackf
                   0x001ca0                  _adc1Multicore
-                  0x0043ac                  _filter_new_sample
+                  0x0043b0                  _filter_new_sample
                   0x001b82                  _floor
-                  0x0044b4                  _initLowPassFilter
-                  0x004348                  _init_filter
+                  0x0044b8                  _initLowPassFilter
+                  0x00434c                  _init_filter
                   0x001d6a                  _main
                   0x001d44                  _mcpMezclador
                   0x001d62                  _pid
-                  0x004520                  _processLowPassFilter
+                  0x004524                  _processLowPassFilter
                   0x001c40                  _scalbn
                   0x0011e6                  _sinf
                   0x001d4e                  _timer1Controller
                   0x001d58                  _timer3Controller
                   0x0023ae                  _timingTimerCallBack
-                  0x0045b4                  adc1.o:_ADC1_ChannelSelect
-                  0x0045bc                  adc1.o:_ADC1_ConversionResultGet
-                  0x00459c                  adc1.o:_ADC1_Disable
-                  0x004594                  adc1.o:_ADC1_Enable
-                  0x0046a4                  adc1.o:_ADC1_IndividualChannelInterruptDisable
-                  0x004680                  adc1.o:_ADC1_IndividualChannelInterruptEnable
-                  0x0046c8                  adc1.o:_ADC1_IndividualChannelInterruptFlagClear
-                  0x00464e                  adc1.o:_ADC1_InterruptDisable
-                  0x004646                  adc1.o:_ADC1_InterruptEnable
-                  0x004656                  adc1.o:_ADC1_InterruptFlagClear
-                  0x00465e                  adc1.o:_ADC1_InterruptPrioritySet
-                  0x0045ec                  adc1.o:_ADC1_IsConversionComplete
-                  0x0045ac                  adc1.o:_ADC1_SoftwareTriggerDisable
-                  0x0045a4                  adc1.o:_ADC1_SoftwareTriggerEnable
-                  0x003912                  build/default/production/app.o:_App_CommOnCommandReceived
-                  0x00327e                  build/default/production/comm.o:_Comm_TimeOutTimerCallBack
+                  0x0045b8                  adc1.o:_ADC1_ChannelSelect
+                  0x0045c0                  adc1.o:_ADC1_ConversionResultGet
+                  0x0045a0                  adc1.o:_ADC1_Disable
+                  0x004598                  adc1.o:_ADC1_Enable
+                  0x0046a8                  adc1.o:_ADC1_IndividualChannelInterruptDisable
+                  0x004684                  adc1.o:_ADC1_IndividualChannelInterruptEnable
+                  0x0046cc                  adc1.o:_ADC1_IndividualChannelInterruptFlagClear
+                  0x004652                  adc1.o:_ADC1_InterruptDisable
+                  0x00464a                  adc1.o:_ADC1_InterruptEnable
+                  0x00465a                  adc1.o:_ADC1_InterruptFlagClear
+                  0x004662                  adc1.o:_ADC1_InterruptPrioritySet
+                  0x0045f0                  adc1.o:_ADC1_IsConversionComplete
+                  0x0045b0                  adc1.o:_ADC1_SoftwareTriggerDisable
+                  0x0045a8                  adc1.o:_ADC1_SoftwareTriggerEnable
+                  0x003916                  build/default/production/app.o:_App_CommOnCommandReceived
+                  0x003282                  build/default/production/comm.o:_Comm_TimeOutTimerCallBack
                   0x002550                  build/default/production/main.o:_Main_OnCalibracionData
                   0x00253a                  build/default/production/main.o:_Main_OnConstantesPID
                   0x002580                  build/default/production/main.o:_Main_OnInstruccion
@@ -1293,60 +1293,60 @@ __FALTREG
  .debug_abbrev    0x00276f         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umuldi3.CH_o)
  .debug_abbrev    0x002783         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsi3.CH_o)
 
-.debug_line       0x000000       0x34e2
+.debug_line       0x000000       0x34e3
  *(.debug_line)
  .debug_line      0x000000        0x3c6 build/default/production/main.o
  .debug_line      0x0003c6        0x14d build/default/production/app.o
  .debug_line      0x000513        0x133 build/default/production/monitorPowerSupply.o
  .debug_line      0x000646        0x249 build/default/production/comm.o
- .debug_line      0x00088f        0x377 ..\panavent.mezclador.X\dist\default\production\panavent.mezclador.X.a(mezclador.o)
- .debug_line      0x000c06         0xdc ..\panavent.mezclador.X\dist\default\production\panavent.mezclador.X.a(mcpMezclador.o)
- .debug_line      0x000ce2        0x13f ..\panavent.valexp.X\dist\default\production\panavent.valexp.X.a(valvulaExpiratoria.o)
- .debug_line      0x000e21         0xaa ..\panavent.utilities.X\dist\default\production\panavent.utilities.X.a(utilities.o)
- .debug_line      0x000ecb        0x115 ..\panavent.utilities.X\dist\default\production\panavent.utilities.X.a(pid.o)
- .debug_line      0x000fe0        0x37e ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(i2c1.o)
- .debug_line      0x00135e        0x18b ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp1.o)
- .debug_line      0x0014e9        0x18b ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp4.o)
- .debug_line      0x001674        0x18b ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp2.o)
- .debug_line      0x0017ff        0x187 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sfm_interface.o)
- .debug_line      0x001986        0x109 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(mcp342x_interface.o)
- .debug_line      0x001a8f        0x107 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(pca9543apw_interface.o)
- .debug_line      0x001b96        0x14b ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(timer1Controller.o)
- .debug_line      0x001ce1        0x14b ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(timer3Controller.o)
- .debug_line      0x001e2c        0x192 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp3.o)
- .debug_line      0x001fbe        0x175 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(tmr1.o)
- .debug_line      0x002133        0x2bf ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(adc1.o)
- .debug_line      0x0023f2        0x157 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(system.o)
- .debug_line      0x002549        0x122 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(pins.o)
- .debug_line      0x00266b        0x194 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(dmt.o)
- .debug_line      0x0027ff         0x6f ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(dmt_asm.o)
- .debug_line      0x00286e        0x12a ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(interrupt.o)
- .debug_line      0x002998        0x128 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(clock.o)
- .debug_line      0x002ac0         0x37 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(feqltle.CH_o)
- .debug_line      0x002af7         0x35 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fgtge.CH_o)
- .debug_line      0x002b2c         0x56 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsfsi.CH_o)
- .debug_line      0x002b82         0x53 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixunssfsi.CH_o)
- .debug_line      0x002bd5         0x3a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatsisf.CH_o)
- .debug_line      0x002c0f         0x3b c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatunsisf.CH_o)
- .debug_line      0x002c4a         0x33 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fne.CH_o)
- .debug_line      0x002c7d         0x4a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.CH_o)
- .debug_line      0x002cc7        0x136 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(addsf3x.CH_o)
- .debug_line      0x002dfd        0x124 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(divsf3x.CH_o)
- .debug_line      0x002f21         0xcc c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.CH_o)
- .debug_line      0x002fed         0x72 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.CH_o)
- .debug_line      0x00305f         0x7a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.CH_o)
- .debug_line      0x0030d9         0x5e c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.CH_o)
- .debug_line      0x003137         0x51 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.CH_o)
- .debug_line      0x003188         0x98 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(spackfx.CH_o)
- .debug_line      0x003220         0x79 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackfx.CH_o)
- .debug_line      0x003299         0x1a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(errno.CH_o)
- .debug_line      0x0032b3         0x53 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fcompare.CH_o)
- .debug_line      0x003306         0x47 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatdisf.CH_o)
- .debug_line      0x00334d         0x6c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatundisf.CH_o)
- .debug_line      0x0033b9         0x5a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fpack.CH_o)
- .debug_line      0x003413         0x3e c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack2.CH_o)
- .debug_line      0x003451         0x57 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umuldi3.CH_o)
- .debug_line      0x0034a8         0x3a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsi3.CH_o)
+ .debug_line      0x00088f        0x378 ..\panavent.mezclador.X\dist\default\production\panavent.mezclador.X.a(mezclador.o)
+ .debug_line      0x000c07         0xdc ..\panavent.mezclador.X\dist\default\production\panavent.mezclador.X.a(mcpMezclador.o)
+ .debug_line      0x000ce3        0x13f ..\panavent.valexp.X\dist\default\production\panavent.valexp.X.a(valvulaExpiratoria.o)
+ .debug_line      0x000e22         0xaa ..\panavent.utilities.X\dist\default\production\panavent.utilities.X.a(utilities.o)
+ .debug_line      0x000ecc        0x115 ..\panavent.utilities.X\dist\default\production\panavent.utilities.X.a(pid.o)
+ .debug_line      0x000fe1        0x37e ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(i2c1.o)
+ .debug_line      0x00135f        0x18b ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp1.o)
+ .debug_line      0x0014ea        0x18b ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp4.o)
+ .debug_line      0x001675        0x18b ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp2.o)
+ .debug_line      0x001800        0x187 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sfm_interface.o)
+ .debug_line      0x001987        0x109 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(mcp342x_interface.o)
+ .debug_line      0x001a90        0x107 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(pca9543apw_interface.o)
+ .debug_line      0x001b97        0x14b ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(timer1Controller.o)
+ .debug_line      0x001ce2        0x14b ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(timer3Controller.o)
+ .debug_line      0x001e2d        0x192 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp3.o)
+ .debug_line      0x001fbf        0x175 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(tmr1.o)
+ .debug_line      0x002134        0x2bf ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(adc1.o)
+ .debug_line      0x0023f3        0x157 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(system.o)
+ .debug_line      0x00254a        0x122 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(pins.o)
+ .debug_line      0x00266c        0x194 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(dmt.o)
+ .debug_line      0x002800         0x6f ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(dmt_asm.o)
+ .debug_line      0x00286f        0x12a ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(interrupt.o)
+ .debug_line      0x002999        0x128 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(clock.o)
+ .debug_line      0x002ac1         0x37 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(feqltle.CH_o)
+ .debug_line      0x002af8         0x35 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fgtge.CH_o)
+ .debug_line      0x002b2d         0x56 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsfsi.CH_o)
+ .debug_line      0x002b83         0x53 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixunssfsi.CH_o)
+ .debug_line      0x002bd6         0x3a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatsisf.CH_o)
+ .debug_line      0x002c10         0x3b c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatunsisf.CH_o)
+ .debug_line      0x002c4b         0x33 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fne.CH_o)
+ .debug_line      0x002c7e         0x4a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.CH_o)
+ .debug_line      0x002cc8        0x136 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(addsf3x.CH_o)
+ .debug_line      0x002dfe        0x124 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(divsf3x.CH_o)
+ .debug_line      0x002f22         0xcc c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.CH_o)
+ .debug_line      0x002fee         0x72 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.CH_o)
+ .debug_line      0x003060         0x7a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.CH_o)
+ .debug_line      0x0030da         0x5e c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.CH_o)
+ .debug_line      0x003138         0x51 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.CH_o)
+ .debug_line      0x003189         0x98 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(spackfx.CH_o)
+ .debug_line      0x003221         0x79 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackfx.CH_o)
+ .debug_line      0x00329a         0x1a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(errno.CH_o)
+ .debug_line      0x0032b4         0x53 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fcompare.CH_o)
+ .debug_line      0x003307         0x47 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatdisf.CH_o)
+ .debug_line      0x00334e         0x6c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(floatundisf.CH_o)
+ .debug_line      0x0033ba         0x5a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fpack.CH_o)
+ .debug_line      0x003414         0x3e c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack2.CH_o)
+ .debug_line      0x003452         0x57 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umuldi3.CH_o)
+ .debug_line      0x0034a9         0x3a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsi3.CH_o)
 
 .debug_frame      0x000000       0x1ad2
  *(.debug_frame)
@@ -4043,7 +4043,7 @@ __c30_signature
  .const             0x9d62          0x8 ..\panavent.utilities.X\dist\default\production\panavent.utilities.X.a(pid.o)
                     0x9d62                  _pid
 
-.text             0x001d6a       0x2e40
+.text             0x001d6a       0x2e44
  .text            0x001d6a        0x828 build/default/production/main.o
                   0x001d6a                  _main
                   0x0023ae                  _timingTimerCallBack
@@ -4052,7 +4052,7 @@ __c30_signature
                   0x002550                  build/default/production/main.o:_Main_OnCalibracionData
                   0x002566                  build/default/production/main.o:_Main_OnPWMData
                   0x002580                  build/default/production/main.o:_Main_OnInstruccion
- .text            0x002592        0x6ea ..\panavent.mezclador.X\dist\default\production\panavent.mezclador.X.a(mezclador.o)
+ .text            0x002592        0x6ee ..\panavent.mezclador.X\dist\default\production\panavent.mezclador.X.a(mezclador.o)
                   0x002592                  _Mezclador_inicializar
                   0x00269a                  _Mezclador_timerCallBack
                   0x002704                  _Mezclador_conversionCallBack
@@ -4066,207 +4066,207 @@ __c30_signature
                   0x002bde                  _Mezclador_setPWMAire
                   0x002bf0                  _Mezclador_setPWMOxigeno
                   0x002c00                  _Mezclador_setPWM
-                  0x002c6a                  _Mezclador_startManualPWM
-                  0x002c74                  _Mezclador_stopManualPWM
- .text            0x002c7c        0x5e8 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(i2c1.o)
-                  0x002f22                  _I2C1_Initialize
-                  0x002f5c                  _I2C1_TimeOutTimerCallBack
-                  0x002f68                  _I2C1_i2cCallBackhandler
-                  0x002f88                  _I2C1_BusRecovery
-                  0x002fae                  _I2C1_Deinitialize
-                  0x002fc6                  _I2C1_Write
-                  0x003028                  _I2C1_Read
-                  0x00308c                  _I2C1_WriteRead
-                  0x003108                  _I2C1_TransferSetup
-                  0x0031c2                  _I2C1_ErrorGetNoReset
-                  0x0031ce                  _I2C1_ErrorSet
-                  0x0031da                  _I2C1_ErrorGet
-                  0x0031ea                  _I2C1_IsBusy
-                  0x00324c                  _I2C1_CallbackRegister
-                  0x00325e                  _I2C1_Callback
- .text            0x003264        0x590 build/default/production/comm.o
-                  0x003264                  _Comm_inicializar
-                  0x00327e                  build/default/production/comm.o:_Comm_TimeOutTimerCallBack
-                  0x00328a                  _Comm_getCommands
-                  0x003298                  _Comm_sendCommandAndWaitWithArgs
-                  0x0032f0                  _Comm_SendCommandAndWait
-                  0x003344                  _Comm_sendCommandWithArgs
-                  0x00344a                  _Comm_getCommand
- .text            0x0037f4        0x528 build/default/production/app.o
-                  0x0037f4                  _App_inicializar
-                  0x003800                  _App_sendData
-                  0x00381c                  _App_sendVentilacionData
-                  0x0038f6                  _App_sendError
-                  0x003912                  build/default/production/app.o:_App_CommOnCommandReceived
- .text            0x003d1c        0x4d2 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sfm_interface.o)
-                  0x003d1c                  _SFM4200_Inicializar
-                  0x003e62                  _SFM4200_Deinicializar
-                  0x003e74                  _SFM4200_SetModo
-                  0x003ebe                  _SFM4200_LeerFlujo
-                  0x003f28                  _SFM4200_Write
-                  0x003f64                  _SFM4200_Read
-                  0x003fd6                  _SFM4200_GetParametro
-                  0x00408e                  _SFM4200_ValidarCheckSum
-                  0x0040b8                  _SFM4200_GenerarCheckSum
-                  0x004124                  _SfmAire_Inicializar
-                  0x004144                  _SfmOxi_Inicializar
-                  0x004164                  _SfmProxi_Inicializar
-                  0x004184                  _SfmAire_LeerFlujo
-                  0x0041a4                  _SfmOxi_LeerFlujo
-                  0x0041c4                  _SfmProxi_LeerFlujo
- .text            0x0041ee        0x3a6 ..\panavent.utilities.X\dist\default\production\panavent.utilities.X.a(utilities.o)
-                  0x0041ee                  _UnpackFloat
-                  0x00425a                  _PackFloat
-                  0x0042a4                  _GenerarCheckSum
-                  0x00431a                  _ValidarCheckSum
-                  0x004348                  _init_filter
-                  0x0043ac                  _filter_new_sample
-                  0x0044b4                  _initLowPassFilter
-                  0x004520                  _processLowPassFilter
- .text            0x004594        0x344 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(adc1.o)
-                  0x004594                  adc1.o:_ADC1_Enable
-                  0x00459c                  adc1.o:_ADC1_Disable
-                  0x0045a4                  adc1.o:_ADC1_SoftwareTriggerEnable
-                  0x0045ac                  adc1.o:_ADC1_SoftwareTriggerDisable
-                  0x0045b4                  adc1.o:_ADC1_ChannelSelect
-                  0x0045bc                  adc1.o:_ADC1_ConversionResultGet
-                  0x0045ec                  adc1.o:_ADC1_IsConversionComplete
-                  0x004646                  adc1.o:_ADC1_InterruptEnable
-                  0x00464e                  adc1.o:_ADC1_InterruptDisable
-                  0x004656                  adc1.o:_ADC1_InterruptFlagClear
-                  0x00465e                  adc1.o:_ADC1_InterruptPrioritySet
-                  0x004680                  adc1.o:_ADC1_IndividualChannelInterruptEnable
-                  0x0046a4                  adc1.o:_ADC1_IndividualChannelInterruptDisable
-                  0x0046c8                  adc1.o:_ADC1_IndividualChannelInterruptFlagClear
-                  0x0046ec                  _ADC1_Initialize
-                  0x0047ae                  _ADC1_Deinitialize
-                  0x00485c                  _ADC1_SharedCorePowerEnable
-                  0x004872                  _ADC1_CommonCallbackRegister
-                  0x004884                  _ADC1_CommonCallback
-                  0x00488a                  _ADC1_Tasks
-                  0x0048a0                  _ADC1_ChannelCallbackRegister
-                  0x0048b2                  _ADC1_ChannelCallback
-                  0x0048be                  _ADC1_ComparatorCallbackRegister
-                  0x0048d0                  _ADC1_ComparatorCallback
- .text            0x0048d8        0x2d2 ..\panavent.utilities.X\dist\default\production\panavent.utilities.X.a(pid.o)
-                  0x0048d8                  _PID_inicializar
-                  0x0048f8                  _PID_desinicializar
-                  0x00490c                  _PID_timerCallBack
-                  0x004920                  _PID_resetDeltaTime
-                  0x00493c                  _PID_calcular
+                  0x002c6e                  _Mezclador_startManualPWM
+                  0x002c78                  _Mezclador_stopManualPWM
+ .text            0x002c80        0x5e8 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(i2c1.o)
+                  0x002f26                  _I2C1_Initialize
+                  0x002f60                  _I2C1_TimeOutTimerCallBack
+                  0x002f6c                  _I2C1_i2cCallBackhandler
+                  0x002f8c                  _I2C1_BusRecovery
+                  0x002fb2                  _I2C1_Deinitialize
+                  0x002fca                  _I2C1_Write
+                  0x00302c                  _I2C1_Read
+                  0x003090                  _I2C1_WriteRead
+                  0x00310c                  _I2C1_TransferSetup
+                  0x0031c6                  _I2C1_ErrorGetNoReset
+                  0x0031d2                  _I2C1_ErrorSet
+                  0x0031de                  _I2C1_ErrorGet
+                  0x0031ee                  _I2C1_IsBusy
+                  0x003250                  _I2C1_CallbackRegister
+                  0x003262                  _I2C1_Callback
+ .text            0x003268        0x590 build/default/production/comm.o
+                  0x003268                  _Comm_inicializar
+                  0x003282                  build/default/production/comm.o:_Comm_TimeOutTimerCallBack
+                  0x00328e                  _Comm_getCommands
+                  0x00329c                  _Comm_sendCommandAndWaitWithArgs
+                  0x0032f4                  _Comm_SendCommandAndWait
+                  0x003348                  _Comm_sendCommandWithArgs
+                  0x00344e                  _Comm_getCommand
+ .text            0x0037f8        0x528 build/default/production/app.o
+                  0x0037f8                  _App_inicializar
+                  0x003804                  _App_sendData
+                  0x003820                  _App_sendVentilacionData
+                  0x0038fa                  _App_sendError
+                  0x003916                  build/default/production/app.o:_App_CommOnCommandReceived
+ .text            0x003d20        0x4d2 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sfm_interface.o)
+                  0x003d20                  _SFM4200_Inicializar
+                  0x003e66                  _SFM4200_Deinicializar
+                  0x003e78                  _SFM4200_SetModo
+                  0x003ec2                  _SFM4200_LeerFlujo
+                  0x003f2c                  _SFM4200_Write
+                  0x003f68                  _SFM4200_Read
+                  0x003fda                  _SFM4200_GetParametro
+                  0x004092                  _SFM4200_ValidarCheckSum
+                  0x0040bc                  _SFM4200_GenerarCheckSum
+                  0x004128                  _SfmAire_Inicializar
+                  0x004148                  _SfmOxi_Inicializar
+                  0x004168                  _SfmProxi_Inicializar
+                  0x004188                  _SfmAire_LeerFlujo
+                  0x0041a8                  _SfmOxi_LeerFlujo
+                  0x0041c8                  _SfmProxi_LeerFlujo
+ .text            0x0041f2        0x3a6 ..\panavent.utilities.X\dist\default\production\panavent.utilities.X.a(utilities.o)
+                  0x0041f2                  _UnpackFloat
+                  0x00425e                  _PackFloat
+                  0x0042a8                  _GenerarCheckSum
+                  0x00431e                  _ValidarCheckSum
+                  0x00434c                  _init_filter
+                  0x0043b0                  _filter_new_sample
+                  0x0044b8                  _initLowPassFilter
+                  0x004524                  _processLowPassFilter
+ .text            0x004598        0x344 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(adc1.o)
+                  0x004598                  adc1.o:_ADC1_Enable
+                  0x0045a0                  adc1.o:_ADC1_Disable
+                  0x0045a8                  adc1.o:_ADC1_SoftwareTriggerEnable
+                  0x0045b0                  adc1.o:_ADC1_SoftwareTriggerDisable
+                  0x0045b8                  adc1.o:_ADC1_ChannelSelect
+                  0x0045c0                  adc1.o:_ADC1_ConversionResultGet
+                  0x0045f0                  adc1.o:_ADC1_IsConversionComplete
+                  0x00464a                  adc1.o:_ADC1_InterruptEnable
+                  0x004652                  adc1.o:_ADC1_InterruptDisable
+                  0x00465a                  adc1.o:_ADC1_InterruptFlagClear
+                  0x004662                  adc1.o:_ADC1_InterruptPrioritySet
+                  0x004684                  adc1.o:_ADC1_IndividualChannelInterruptEnable
+                  0x0046a8                  adc1.o:_ADC1_IndividualChannelInterruptDisable
+                  0x0046cc                  adc1.o:_ADC1_IndividualChannelInterruptFlagClear
+                  0x0046f0                  _ADC1_Initialize
+                  0x0047b2                  _ADC1_Deinitialize
+                  0x004860                  _ADC1_SharedCorePowerEnable
+                  0x004876                  _ADC1_CommonCallbackRegister
+                  0x004888                  _ADC1_CommonCallback
+                  0x00488e                  _ADC1_Tasks
+                  0x0048a4                  _ADC1_ChannelCallbackRegister
+                  0x0048b6                  _ADC1_ChannelCallback
+                  0x0048c2                  _ADC1_ComparatorCallbackRegister
+                  0x0048d4                  _ADC1_ComparatorCallback
+ .text            0x0048dc        0x2d2 ..\panavent.utilities.X\dist\default\production\panavent.utilities.X.a(pid.o)
+                  0x0048dc                  _PID_inicializar
+                  0x0048fc                  _PID_desinicializar
+                  0x004910                  _PID_timerCallBack
+                  0x004924                  _PID_resetDeltaTime
+                  0x004940                  _PID_calcular
 
-.dinit            0x004baa        0x244
- .dinit           0x004baa        0x244 data_init
+.dinit            0x004bae        0x244
+ .dinit           0x004bae        0x244 data_init
 
-.text             0x004dee        0xcea
- .text            0x004dee        0x194 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(timer1Controller.o)
-                  0x004dee                  _Timer1Controller_quitarCallback
-                  0x004e2e                  _Timer1Controller_agregarCallback
-                  0x004e8e                  _Timer1Controller_quitarCallbacks
-                  0x004eb0                  _Timer1Controller_inicializar
-                  0x004ed2                  _Timer1Controller_desinicializar
-                  0x004ee8                  _Timer1Controller_timerCallBack
- .text            0x004f82        0x18c ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(timer3Controller.o)
-                  0x004f82                  _Timer3Controller_quitarCallback
-                  0x004fc2                  _Timer3Controller_agregarCallback
-                  0x005022                  _Timer3Controller_quitarCallbacks
-                  0x005044                  _Timer3Controller_iniciar
-                  0x00505e                  _Timer3Controller_detener
-                  0x005074                  _Timer3Controller_timerCallBack
- .text            0x00510e        0x140 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(mcp342x_interface.o)
-                  0x00510e                  _Mcp342x_dispararConvercion
-                  0x0051a6                  _Mcp342x_leerConversion
- .text            0x00524e        0x118 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(pca9543apw_interface.o)
-                  0x00524e                  _PCA9543APW_setCanal
-                  0x0052da                  _PCA9543APW_getCanal
-                  0x00532e                  _PCA9543APW_disable
- .text            0x005366         0xfe ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(dmt.o)
-                  0x00537e                  _DMT_Initialize
-                  0x005390                  _DMT_Enable
-                  0x00539a                  _DMT_PreClear
-                  0x0053a8                  _DMT_Clear
-                  0x0053be                  _DMT_IsWindowOpen
-                  0x0053d8                  _DMT_IsPreCleared
-                  0x0053e0                  _DMT_TimeoutCounterGet
-                  0x0053fe                  _DMT_WindowTimeoutCounterGet
-                  0x00541c                  _DMT_StatusGet
-                  0x00542e                  _DMT_CounterGet
-                  0x00544c                  _DMT_EventCallbackRegister
-                  0x00545e                  _DMT_EventCallback
- .text            0x005464         0xd6 build/default/production/monitorPowerSupply.o
-                  0x005464                  _MonitorPowerSupply_AccionarValvulaSeguridad
-                  0x0054c4                  _MonitorPowerSupply_GetInfoCarga
- .text            0x00553a         0xbe ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(interrupt.o)
-                  0x00553a                  _INTERRUPT_Initialize
-                  0x005598                  _INTERRUPT_Deinitialize
- .text            0x0055f8         0xb6 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp1.o)
-                  0x0055f8                  _SCCP1_PWM_Initialize
-                  0x005626                  _SCCP1_PWM_Deinitialize
-                  0x005650                  _SCCP1_PWM_Enable
-                  0x005658                  _SCCP1_PWM_Disable
-                  0x005660                  _SCCP1_PWM_PeriodSet
-                  0x00566c                  _SCCP1_PWM_DutyCycleSet
-                  0x005678                  _SCCP1_PWM_SoftwareTriggerSet
-                  0x005680                  _SCCP1_PWM_CallbackRegister
-                  0x005692                  _SCCP1_PWM_Callback
-                  0x005698                  _SCCP1_PWM_Tasks
- .text            0x0056ae         0xb6 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp4.o)
-                  0x0056ae                  _SCCP4_PWM_Initialize
-                  0x0056dc                  _SCCP4_PWM_Deinitialize
-                  0x005706                  _SCCP4_PWM_Enable
-                  0x00570e                  _SCCP4_PWM_Disable
-                  0x005716                  _SCCP4_PWM_PeriodSet
-                  0x005722                  _SCCP4_PWM_DutyCycleSet
-                  0x00572e                  _SCCP4_PWM_SoftwareTriggerSet
-                  0x005736                  _SCCP4_PWM_CallbackRegister
-                  0x005748                  _SCCP4_PWM_Callback
-                  0x00574e                  _SCCP4_PWM_Tasks
- .text            0x005764         0xb6 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp2.o)
-                  0x005764                  _SCCP2_PWM_Initialize
-                  0x005792                  _SCCP2_PWM_Deinitialize
-                  0x0057bc                  _SCCP2_PWM_Enable
-                  0x0057c4                  _SCCP2_PWM_Disable
-                  0x0057cc                  _SCCP2_PWM_PeriodSet
-                  0x0057d8                  _SCCP2_PWM_DutyCycleSet
-                  0x0057e4                  _SCCP2_PWM_SoftwareTriggerSet
-                  0x0057ec                  _SCCP2_PWM_CallbackRegister
-                  0x0057fe                  _SCCP2_PWM_Callback
-                  0x005804                  _SCCP2_PWM_Tasks
- .text            0x00581a         0x96 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp3.o)
-                  0x00581a                  _SCCP3_Timer_Initialize
-                  0x005846                  _SCCP3_Timer_Deinitialize
-                  0x005874                  _SCCP3_Timer_Start
-                  0x005880                  _SCCP3_Timer_Stop
-                  0x00588c                  _SCCP3_Timer_PeriodCountSet
-                  0x005898                  _SCCP3_TimeoutCallbackRegister
-                  0x0058aa                  _SCCP3_TimeoutCallback
- .text            0x0058b0         0x68 ..\panavent.valexp.X\dist\default\production\panavent.valexp.X.a(valvulaExpiratoria.o)
-                  0x0058b0                  _ValvulaExpiratoria_inicializar
-                  0x0058c4                  _ValvulaExpiratoria_abrir
-                  0x0058d0                  _ValvulaExpiratoria_cerrar
-                  0x0058dc                  _ValvulaExpiratoria_controlPeep
-                  0x005908                  _ValvulaExpiratoria_setConstantesPID
- .text            0x005918         0x64 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(clock.o)
-                  0x005918                  _CLOCK_Initialize
- .text            0x00597c         0x62 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(pins.o)
-                  0x00597c                  _PINS_Initialize
- .text            0x0059de         0x5a ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(tmr1.o)
-                  0x0059de                  _TMR1_Initialize
-                  0x0059f0                  _TMR1_Deinitialize
-                  0x0059fe                  _TMR1_Start
-                  0x005a0a                  _TMR1_Stop
-                  0x005a14                  _TMR1_PeriodCountSet
-                  0x005a20                  _TMR1_TimeoutCallbackRegister
-                  0x005a32                  _TMR1_TimeoutCallback
- .text            0x005a38         0x46 ..\panavent.mezclador.X\dist\default\production\panavent.mezclador.X.a(mcpMezclador.o)
-                  0x005a38                  _McpMezclador_dispararConvercion
-                  0x005a58                  _McpMezclador_leerConversion
- .text            0x005a7e         0x30 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(dmt_asm.o)
-                  0x005a80                  _DMT_CalibratedCounterGet
-                  0x005a92                  _DMT_Calibrate
- .text            0x005aae         0x2a ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(system.o)
-                  0x005aba                  _SYSTEM_Initialize
+.text             0x004df2        0xcea
+ .text            0x004df2        0x194 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(timer1Controller.o)
+                  0x004df2                  _Timer1Controller_quitarCallback
+                  0x004e32                  _Timer1Controller_agregarCallback
+                  0x004e92                  _Timer1Controller_quitarCallbacks
+                  0x004eb4                  _Timer1Controller_inicializar
+                  0x004ed6                  _Timer1Controller_desinicializar
+                  0x004eec                  _Timer1Controller_timerCallBack
+ .text            0x004f86        0x18c ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(timer3Controller.o)
+                  0x004f86                  _Timer3Controller_quitarCallback
+                  0x004fc6                  _Timer3Controller_agregarCallback
+                  0x005026                  _Timer3Controller_quitarCallbacks
+                  0x005048                  _Timer3Controller_iniciar
+                  0x005062                  _Timer3Controller_detener
+                  0x005078                  _Timer3Controller_timerCallBack
+ .text            0x005112        0x140 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(mcp342x_interface.o)
+                  0x005112                  _Mcp342x_dispararConvercion
+                  0x0051aa                  _Mcp342x_leerConversion
+ .text            0x005252        0x118 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(pca9543apw_interface.o)
+                  0x005252                  _PCA9543APW_setCanal
+                  0x0052de                  _PCA9543APW_getCanal
+                  0x005332                  _PCA9543APW_disable
+ .text            0x00536a         0xfe ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(dmt.o)
+                  0x005382                  _DMT_Initialize
+                  0x005394                  _DMT_Enable
+                  0x00539e                  _DMT_PreClear
+                  0x0053ac                  _DMT_Clear
+                  0x0053c2                  _DMT_IsWindowOpen
+                  0x0053dc                  _DMT_IsPreCleared
+                  0x0053e4                  _DMT_TimeoutCounterGet
+                  0x005402                  _DMT_WindowTimeoutCounterGet
+                  0x005420                  _DMT_StatusGet
+                  0x005432                  _DMT_CounterGet
+                  0x005450                  _DMT_EventCallbackRegister
+                  0x005462                  _DMT_EventCallback
+ .text            0x005468         0xd6 build/default/production/monitorPowerSupply.o
+                  0x005468                  _MonitorPowerSupply_AccionarValvulaSeguridad
+                  0x0054c8                  _MonitorPowerSupply_GetInfoCarga
+ .text            0x00553e         0xbe ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(interrupt.o)
+                  0x00553e                  _INTERRUPT_Initialize
+                  0x00559c                  _INTERRUPT_Deinitialize
+ .text            0x0055fc         0xb6 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp1.o)
+                  0x0055fc                  _SCCP1_PWM_Initialize
+                  0x00562a                  _SCCP1_PWM_Deinitialize
+                  0x005654                  _SCCP1_PWM_Enable
+                  0x00565c                  _SCCP1_PWM_Disable
+                  0x005664                  _SCCP1_PWM_PeriodSet
+                  0x005670                  _SCCP1_PWM_DutyCycleSet
+                  0x00567c                  _SCCP1_PWM_SoftwareTriggerSet
+                  0x005684                  _SCCP1_PWM_CallbackRegister
+                  0x005696                  _SCCP1_PWM_Callback
+                  0x00569c                  _SCCP1_PWM_Tasks
+ .text            0x0056b2         0xb6 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp4.o)
+                  0x0056b2                  _SCCP4_PWM_Initialize
+                  0x0056e0                  _SCCP4_PWM_Deinitialize
+                  0x00570a                  _SCCP4_PWM_Enable
+                  0x005712                  _SCCP4_PWM_Disable
+                  0x00571a                  _SCCP4_PWM_PeriodSet
+                  0x005726                  _SCCP4_PWM_DutyCycleSet
+                  0x005732                  _SCCP4_PWM_SoftwareTriggerSet
+                  0x00573a                  _SCCP4_PWM_CallbackRegister
+                  0x00574c                  _SCCP4_PWM_Callback
+                  0x005752                  _SCCP4_PWM_Tasks
+ .text            0x005768         0xb6 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp2.o)
+                  0x005768                  _SCCP2_PWM_Initialize
+                  0x005796                  _SCCP2_PWM_Deinitialize
+                  0x0057c0                  _SCCP2_PWM_Enable
+                  0x0057c8                  _SCCP2_PWM_Disable
+                  0x0057d0                  _SCCP2_PWM_PeriodSet
+                  0x0057dc                  _SCCP2_PWM_DutyCycleSet
+                  0x0057e8                  _SCCP2_PWM_SoftwareTriggerSet
+                  0x0057f0                  _SCCP2_PWM_CallbackRegister
+                  0x005802                  _SCCP2_PWM_Callback
+                  0x005808                  _SCCP2_PWM_Tasks
+ .text            0x00581e         0x96 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(sccp3.o)
+                  0x00581e                  _SCCP3_Timer_Initialize
+                  0x00584a                  _SCCP3_Timer_Deinitialize
+                  0x005878                  _SCCP3_Timer_Start
+                  0x005884                  _SCCP3_Timer_Stop
+                  0x005890                  _SCCP3_Timer_PeriodCountSet
+                  0x00589c                  _SCCP3_TimeoutCallbackRegister
+                  0x0058ae                  _SCCP3_TimeoutCallback
+ .text            0x0058b4         0x68 ..\panavent.valexp.X\dist\default\production\panavent.valexp.X.a(valvulaExpiratoria.o)
+                  0x0058b4                  _ValvulaExpiratoria_inicializar
+                  0x0058c8                  _ValvulaExpiratoria_abrir
+                  0x0058d4                  _ValvulaExpiratoria_cerrar
+                  0x0058e0                  _ValvulaExpiratoria_controlPeep
+                  0x00590c                  _ValvulaExpiratoria_setConstantesPID
+ .text            0x00591c         0x64 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(clock.o)
+                  0x00591c                  _CLOCK_Initialize
+ .text            0x005980         0x62 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(pins.o)
+                  0x005980                  _PINS_Initialize
+ .text            0x0059e2         0x5a ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(tmr1.o)
+                  0x0059e2                  _TMR1_Initialize
+                  0x0059f4                  _TMR1_Deinitialize
+                  0x005a02                  _TMR1_Start
+                  0x005a0e                  _TMR1_Stop
+                  0x005a18                  _TMR1_PeriodCountSet
+                  0x005a24                  _TMR1_TimeoutCallbackRegister
+                  0x005a36                  _TMR1_TimeoutCallback
+ .text            0x005a3c         0x46 ..\panavent.mezclador.X\dist\default\production\panavent.mezclador.X.a(mcpMezclador.o)
+                  0x005a3c                  _McpMezclador_dispararConvercion
+                  0x005a5c                  _McpMezclador_leerConversion
+ .text            0x005a82         0x30 ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(dmt_asm.o)
+                  0x005a84                  _DMT_CalibratedCounterGet
+                  0x005a96                  _DMT_Calibrate
+ .text            0x005ab2         0x2a ..\panavent.hardware.drivers.X\dist\default\production\panavent.hardware.drivers.X.a(system.o)
+                  0x005abe                  _SYSTEM_Initialize
 
-.init.delay32     0x005ad8         0x1c
- .init.delay32    0x005ad8         0x1c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(delay32ch.Meo)
-                  0x005ad8                  ___delay32
+.init.delay32     0x005adc         0x1c
+ .init.delay32    0x005adc         0x1c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(delay32ch.Meo)
+                  0x005adc                  ___delay32

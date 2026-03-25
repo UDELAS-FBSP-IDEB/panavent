@@ -132,11 +132,11 @@ namespace panavent.app.core
                                                 EnqueuePacket(new Ack() { SequenceNumber = setPWM.SequenceNumber });
                                                 break;
                                             case AppCommandType.APP_CMD_PROTOCOLO_ACK:
-                                                Debug.WriteLine("ACK recibido"); 
+                                                //Debug.WriteLine("ACK recibido"); 
                                                 break;
                                             case AppCommandType.APP_CMD_SINGLE_DATA:
                                                 var singleData = new SingleData (input.ToArray());
-                                                Debug.WriteLine(string.Format ("{0},{1:f}", DateTime.Now.ToString("hh:mm:ss:ffffff"),  singleData.Data));
+                                                
                                                 
                                                 var ventData = new VentilacionData();
                                                 ventData.Flujo = singleData.Data;
